@@ -1,0 +1,171 @@
+table, th, td {
+    border: 1px solid;
+    text-align: center;
+  }
+
+.attributeHeader {
+  text-align: center;
+}
+#FEELS {
+  display: inline-block;
+  margin-right: 100px;
+  vertical-align: top;
+}
+#resistances {
+  display: inline-block;
+  margin-right: 100px;
+  vertical-align: top;
+}
+#saves {
+  display: inline-block;
+  margin-right: 100px;
+  vertical-align: top;
+}
+#speciesRadio {
+  display: inline-block;
+  margin-right: 100px;
+  vertical-align: top;
+}
+#cliqueRadio {
+  display: inline-block;
+  margin-right: 100px;
+  vertical-align: top;
+  margin-bottom: 25px;
+}
+#witchAttributePicks {
+  display: none;
+  margin-left: 25px;
+}
+#feelsTable {
+  display: inline-table;
+  margin-right: 0;
+  vertical-align: top;
+  padding-right: 0;
+}
+#resistancesTable {
+  display: inline-table;
+  margin-left: 0;
+  vertical-align: top;
+  padding-left: 0;
+}
+#savingThrowsTable {
+  display: inline-table;
+  margin-left: 0;
+  vertical-align: top;
+  padding-left: 0;
+}
+#nerdAttributePicks {
+  display: none;
+  margin-left: 25px;
+}
+#jockAttributePicks {
+  display: none;
+  margin-left: 25px;
+}#prepAttributePicks {
+  display: none;
+  margin-left: 25px;
+}#theaterKidAttributePicks {
+  display: none;
+  margin-left: 25px;
+}#lonerAttributePicks {
+  display: none;
+  margin-left: 25px;
+}
+#chameleonAttributePicks {
+  display: none;
+  margin-left: 25px;
+}
+#unattachedLabel {
+  font-weight: bold;
+}
+#oneResistanceDiv {
+  display: none;
+  margin-left: 25px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+#twoResistancesDiv {
+  display: none;
+  margin-left: 25px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+#cliqueBasedAbilities {
+  display: inline-block;
+  }
+#nerdTalentOrSkillLabel {
+  display: inline;
+}
+#nerdAbilities {
+  display: none;
+}
+#abilities {
+  display: inline-table;
+}
+#abilityPointsLeft {
+  display: inline-table;
+  margin-left: 40px;
+  vertical-align: top;
+  margin-top: 25px;
+}
+.prioritizeAbilities {
+  display: inline-block;
+  margin-right: 25px;
+}
+
+h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+#notification {
+  margin-left: 40px;
+  margin-bottom: 0;
+}
+#nerdTalentDiv {
+  display: none;
+}
+#nerdSkillDiv {
+  display: none;
+}
+.nerdFreebieDivs {
+  display: none;
+}
+#jockAbilities {
+  display: none;
+}
+.jockFreebieDivs {
+  display: none;
+}
+#prepAbilities {
+  display: none;
+}
+.prepFreebieDivs {
+  margin-left: 25px;
+}
+#theaterKidAbilities {
+  display: none;
+}
+#theaterKidActingDiv {
+  display: none;
+}
+.theaterKidFreebieDivs {
+  margin-left: 25px;
+}
+#lonerAbilities {
+  display: none;
+}
+.lonerFreebieDivs {
+  display: none;
+}
+#chameleonAbilities {
+  display: none;
+}
+.chameleonFreebieDivs {
+  margin-left: 25px;
+}
+#hiddenTable {
+  display: inline-block;
+  margin-top: 25px;
+}

@@ -54,6 +54,12 @@ table, th, td {
   vertical-align: top;
   padding-left: 0;
 }
+#combatValuesTable {
+  display: inline-block;
+  margin-top: 24px;
+  margin-left: 25px;
+  padding-left: 0;
+}
 #nerdAttributePicks {
   display: none;
   margin-left: 25px;
@@ -99,30 +105,6 @@ table, th, td {
 #nerdAbilities {
   display: none;
 }
-#abilities {
-  display: inline-table;
-}
-#abilityPointsLeft {
-  display: inline-table;
-  margin-left: 40px;
-  vertical-align: top;
-  margin-top: 25px;
-}
-.prioritizeAbilities {
-  display: inline-block;
-  margin-right: 25px;
-}
-
-h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-}
-#notification {
-  margin-left: 40px;
-  margin-bottom: 0;
-}
 #nerdTalentDiv {
   display: none;
 }
@@ -165,7 +147,32 @@ h3 {
 .chameleonFreebieDivs {
   margin-left: 25px;
 }
-#hiddenTable {
-  display: inline-block;
+/*
+.abilitiesApplied {
+  display: none;
+}
+*/
+#abilities {
+  display: inline-table;
+}
+#abilityPointsLeft {
+  display: inline-table;
+  margin-left: 40px;
+  vertical-align: top;
   margin-top: 25px;
+}
+.prioritizeAbilities {
+  display: inline-block;
+  margin-right: 25px;
+}
+
+h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+#notification {
+  margin-left: 40px;
+  margin-bottom: 0;
 }

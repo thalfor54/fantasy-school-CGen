@@ -36,7 +36,7 @@
         <input type="radio" id="loners" name="clique" onclick="lonerModifiers()">
         <label for="loners">Loners</label><br>
         <div id="lonerAttributePicks"></div>
-        <input type="radio" id="chameleon" name="clique" onclick="chameleonModifiers()">
+        <input type="radio" id="chameleons" name="clique" onclick="chameleonModifiers()">
         <label for="chameleon">Chameleons</label><br>
         <div id="chameleonAttributePicks"></div>
     </div>
@@ -302,10 +302,27 @@
         </tr>
         <tr>
             <td>Will</td>
-            <td id="willBaseScore"></th>
+            <td id="willBaseScore"></td>
             <td id="willSpeciesModifier" class="speciesModifier"></td>
             <td id="willCliqueModifier" class="cliqueModifier"></td>
             <td id="willTotal"></td>
+        </tr>
+    </table>
+    <table id="combatValuesTable">
+        <tr>
+            <th colspan="2" class="otherHeader">Other Combat Values</th>
+        </tr>
+        <tr>
+            <td>Armor Class:</td>
+            <td id="armorClass"></td>
+        </tr>
+        <tr>
+            <td>Initiative:</td>
+            <td id="initiative"></td>
+        </tr>
+        <tr>
+            <td>Hit Points:</td>
+            <td id="hitPoints"></td>
         </tr>
     </table>
 <!-- Moving from Attributes to Abilities -->
@@ -358,9 +375,9 @@
                 <option id="nerdHistory01" class="nerdKnowledge01">History</option>
                 <option id="nerdMedicine01" class="nerdKnowledge01">Medicine</option>
                 <option id="nerdNature01" class="nerdKnowledge01">Nature</option>
+                <option id="nerdReligion01" class="nerdKnowledge01">Religion</option>
                 <option id="nerdScience01" class="nerdKnowledge01">Science</option>
                 <option id="nerdSpecial01" class="nerdKnowledge01">Special</option>
-                <option id="nerdTheology01" class="nerdKnowledge01">Theology</option>
             </select>
             <br>
             <label>Nerd: Knowledge 2</label>
@@ -372,9 +389,9 @@
                 <option id="nerdHistory02" class="nerdKnowledge02">History</option>
                 <option id="nerdMedicine02" class="nerdKnowledge02">Medicine</option>
                 <option id="nerdNature02" class="nerdKnowledge02">Nature</option>
+                <option id="nerdReligion02" class="nerdKnowledge02">Religion</option>
                 <option id="nerdScience02" class="nerdKnowledge02">Science</option>
                 <option id="nerdSpecial02" class="nerdKnowledge02">Special</option>
-                <option id="nerdTheology02" class="nerdKnowledge02">Theology</option>
             </select>
             <br>
             <label>Nerd: Knowledge 3</label>
@@ -386,9 +403,9 @@
                 <option id="nerdHistory03" class="nerdKnowledge03">History</option>
                 <option id="nerdMedicine03" class="nerdKnowledge03">Medicine</option>
                 <option id="nerdNature03" class="nerdKnowledge03">Nature</option>
+                <option id="nerdReligion03" class="nerdKnowledge03">Religion</option>
                 <option id="nerdScience03" class="nerdKnowledge03">Science</option>
                 <option id="nerdSpecial03" class="nerdKnowledge03">Special</option>
-                <option id="nerdTheology03" class="nerdKnowledge03">Theology</option>
             </select>
             <br>
             <label>Nerd: One Freebie</label><br>
@@ -437,9 +454,9 @@
                     <option id="nerdHistoryFreebie" class="nerdFreebieKnowledge">History</option>
                     <option id="nerdMedicineFreebie" class="nerdFreebieKnowledge">Medicine</option>
                     <option id="nerdNatureFreebie" class="nerdFreebieKnowledge">Nature</option>
+                    <option id="nerdReligionFreebie" class="nerdFreebieKnowledge">Religion</option>
                     <option id="nerdScienceFreebie" class="nerdFreebieKnowledge">Science</option>
                     <option id="nerdSpecialFreebie" class="nerdFreebieKnowledge">Special</option>
-                    <option id="nerdTheologyFreebie" class="nerdFreebieKnowledge">Theology</option>
                 </select>
             </div>
         <br>
@@ -541,14 +558,15 @@
                    <option id="jockHistoryFreebie" class="jockFreebieKnowledge">History</option>
                    <option id="jockMedicineFreebie" class="jockFreebieKnowledge">Medicine</option>
                    <option id="jockNatureFreebie" class="jockFreebieKnowledge">Nature</option>
+                   <option id="jockReligionFreebie" class="jockFreebieKnowledge">Religion</option>
                    <option id="jockScienceFreebie" class="jockFreebieKnowledge">Science</option>
                    <option id="jockSpecialFreebie" class="jockFreebieKnowledge">Special</option>
-                   <option id="jockTheologyFreebie" class="jockFreebieKnowledge">Theology</option>
                </select>
             </div>
         <br>
         <button id="jockCliqueBasedAbilitiesButton" type="button" onclick="applyJockAbilities()">Commit Choices</button>
         <button id="jockCliqueBasedAbilitiesResetButton" type="button" onclick="resetJockAbilities()">Reset</button>
+        <br>
         </div>
         <div id="prepAbilities">
             <label>Prep:</label>
@@ -570,65 +588,11 @@
                 <option id="prepKnowledgeHistory" class="prepKnowledge">History</option>
                 <option id="prepKnowledgeMedicine" class="prepKnowledge">Medicine</option>
                 <option id="prepKnowledgeNature" class="prepKnowledge">Nature</option>
+                <option id="prepKnowledgeReligion" class="prepKnowledge">Religion</option>
                 <option id="prepKnowledgeScience" class="prepKnowledge">Science</option>
                 <option id="prepKnowledgeSpecial" class="prepKnowledge">Special</option>
-                <option id="prepKnowledgeTheology" class="prepKnowledge">Theology</option>
             </select>
             <br>
-<!--
-            <label>Prep: Freebie 1</label><br>
-            <input type="radio" id="prepFreebieTalentRadio" name="prepFreebie" onclick="presentPrepFreebieTalent()">
-            <label for="prepFreebieTalentRadio">Talent:</label>
-            <div id="prepFreebieTalentDiv" class="prepFreebieDivs">
-                <select id="prepFreebieTalents">
-                    <option id="prepFreebieTalentBlank"></option>
-                    <option id="prepActingFreebie" class="prepFreebieTalent">Acting</option>
-                    <option id="prepAlertnessFreebie" class="prepFreebieTalent">Alertness</option>
-                    <option id="prepAthleticsFreebie" class="prepFreebieTalent">Athletics</option>
-                    <option id="prepBrawlingFreebie" class="prepFreebieTalent">Brawling</option>
-                    <option id="prepCalmingDownFreebie" class="prepFreebieTalent">Calming Down</option>
-                    <option id="prepEmpathyFreebie" class="prepFreebieTalent">Empathy</option>
-                    <option id="prepIntimidationFreebie" class="prepFreebieTalent">Intimidation</option>
-                    <option id="prepMemoryFreebie" class="prepFreebieTalent">Memory</option>
-                    <option id="prepStealthFreebie" class="prepFreebieTalent">Stealth</option>
-                </select>
-            </div>
-            <br>   
-            <input type="radio" id="prepFreebieSkillRadio" name="prepFreebie" onclick="presentPrepFreebieSkill()">
-            <label for="prepFreebieSkillRadio">Skill:</label>
-            <div id="prepFreebieSkillDiv" class="prepFreebieDivs">
-                <select id="prepFreebieSkills">
-                    <option id="prepFreebieSkillBlank"></option>
-                    <option id="prepFirearmsFreebie" class="prepFreebieSkill">Firearms</option>
-                    <option id="prepInvestigationFreebie" class="prepFreebieSkill">Investigation</option>
-                    <option id="prepLeadershipFreebie" class="prepFreebieSkill">Leadership</option>
-                    <option id="prepLockPickingFreebie" class="prepFreebieSkill">Lock-Picking</option>
-                    <option id="prepLyingFreebie" class="prepFreebieSkill">Lying</option>
-                    <option id="prepMeleeFreebie" class="prepFreebieSkill">Melee</option>
-                    <option id="prepMusicFreebie" class="prepFreebieSkill">Music</option>
-                    <option id="prepSecurityFreebie" class="prepFreebieSkill">Security</option>
-                    <option id="prepSocializingFreebie" class="prepFreebieSkill">Socializing</option>
-                </select>
-            </div>
-            <br>
-            <input type="radio" id="prepFreebieKnowledgeRadio" name="prepFreebie" onclick="presentPrepFreebieKnowledge()">
-            <label for="prepFreebieKnowledgeRadio">Knowledge:</label>
-            <div id="prepFreebieKnowledgeDiv" class="prepFreebieDivs">
-                <select id="prepFreebieKnowledges">
-                    <option id="prepFreebieKnowledgeBlank"></option>
-                    <option id="prepArcanaFreebie" class="prepFreebieKnowledge">Arcana</option>
-                    <option id="prepCodeBreakingFreebie" class="prepFreebieKnowledge">Code-Breaking</option>
-                    <option id="prepComputersFreebie" class="prepFreebieKnowledge">Computers</option>
-                    <option id="prepHistoryFreebie" class="prepFreebieKnowledge">History</option>
-                    <option id="prepMedicineFreebie" class="prepFreebieKnowledge">Medicine</option>
-                    <option id="prepNatureFreebie" class="prepFreebieKnowledge">Nature</option>
-                    <option id="prepScienceFreebie" class="prepFreebieKnowledge">Science</option>
-                    <option id="prepSpecialFreebie" class="prepFreebieKnowledge">Special</option>
-                    <option id="prepTheologyFreebie" class="prepFreebieKnowledge">Theology</option>
-                </select>
-            </div>
-         <br>
--->
             <div id="prepFreebie01Div" class="prepFreebieDivs">
                 <label>Prep Freebie 1:</label>
                 <input id="prepFreebie01Talent" type="radio" name="prepFreebie01">
@@ -669,9 +633,9 @@
                     <option id="prepHistoryFreebie01" class="prepFreebie01Knowledge">History</option>
                     <option id="prepMedicineFreebie01" class="prepFreebie01Knowledge">Medicine</option>
                     <option id="prepNatureFreebie01" class="prepFreebie01Knowledge">Nature</option>
+                    <option id="prepReligionFreebie01" class="prepFreebie01Knowledge">Religion</option>
                     <option id="prepScienceFreebie01" class="prepFreebie01Knowledge">Science</option>
                     <option id="prepSpecialFreebie01" class="prepFreebie01Knowledge">Special</option>
-                    <option id="prepTheologyFreebie01" class="prepFreebie01Knowledge">Theology</option>
                 </select>
             </div>
             <div id="prepFreebie02Div" class="prepFreebieDivs">
@@ -714,13 +678,14 @@
                     <option id="prepHistoryFreebie02" class="prepFreebie02Knowledge">History</option>
                     <option id="prepMedicineFreebie02" class="prepFreebie02Knowledge">Medicine</option>
                     <option id="prepNatureFreebie02" class="prepFreebie02Knowledge">Nature</option>
+                    <option id="prepReligionFreebie02" class="prepFreebie02Knowledge">Religion</option>
                     <option id="prepScienceFreebie02" class="prepFreebie02Knowledge">Science</option>
                     <option id="prepSpecialFreebie02" class="prepFreebie02Knowledge">Special</option>
-                    <option id="prepTheologyFreebie02" class="prepFreebie02Knowledge">Theology</option>
                 </select>
             </div>
-         <button id="prepCliqueBasedAbilitiesButton" type="button" onclick="applyPrepAbilities()">Commit Choices</button>
-         <button id="prepCliqueBasedAbilitiesResetButton" type="button" onclick="resetPrepAbilities()">Reset</button> 
+        <button id="prepCliqueBasedAbilitiesButton" type="button" onclick="applyPrepAbilities()">Commit Choices</button>
+        <button id="prepCliqueBasedAbilitiesResetButton" type="button" onclick="resetPrepAbilities()">Reset</button> 
+        <br>
         </div>
         <div id="theaterKidAbilities">
             <label>Theater Kid: Acting or Music:</label>
@@ -739,9 +704,9 @@
                 <option id="theaterKidHistory" class="theaterKidKnowledge">History</option>
                 <option id="theaterKidMedicine" class="theaterKidKnowledge">Medicine</option>
                 <option id="theaterKidNature" class="theaterKidKnowledge">Nature</option>
+                <option id="theaterKidReligion" class="theaterKidKnowledge">Religion</option>
                 <option id="theaterKidScience" class="theaterKidKnowledge">Science</option>
                 <option id="theaterKidSpecial" class="theaterKidKnowledge">Special</option>
-                <option id="theaterKidTheology" class="theaterKidKnowledge">Theology</option>
             </select>
             <br>
             <label>Theater Kid: 3 Freebies</label>
@@ -786,9 +751,9 @@
                     <option id="theaterKidHistoryFreebie01" class="theaterKidFreebie01Knowledge">History</option>
                     <option id="theaterKidMedicineFreebie01" class="theaterKidFreebie01Knowledge">Medicine</option>
                     <option id="theaterKidNatureFreebie01" class="theaterKidFreebie01Knowledge">Nature</option>
+                    <option id="theaterKidReligionFreebie01" class="theaterKidFreebie01Knowledge">Religion</option>
                     <option id="theaterKidScienceFreebie01" class="theaterKidFreebie01Knowledge">Science</option>
                     <option id="theaterKidSpecialFreebie01" class="theaterKidFreebie01Knowledge">Special</option>
-                    <option id="theaterKidTheologyFreebie01" class="theaterKidFreebie01Knowledge">Theology</option>
                 </select>
             </div>
             <div id="theaterKidFreebie02Div" class="theaterKidFreebieDivs">
@@ -831,9 +796,9 @@
                     <option id="theaterKidHistoryFreebie02" class="theaterKidFreebie02Knowledge">History</option>
                     <option id="theaterKidMedicineFreebie02" class="theaterKidFreebie02Knowledge">Medicine</option>
                     <option id="theaterKidNatureFreebie02" class="theaterKidFreebie02Knowledge">Nature</option>
+                    <option id="theaterKidReligionFreebie02" class="theaterKidFreebie02Knowledge">Religion</option>
                     <option id="theaterKidScienceFreebie02" class="theaterKidFreebie02Knowledge">Science</option>
                     <option id="theaterKidSpecialFreebie02" class="theaterKidFreebie02Knowledge">Special</option>
-                    <option id="theaterKidTheologyFreebie02" class="theaterKidFreebie02Knowledge">Theology</option>
                 </select>
             </div>
             <div id="theaterKidFreebie03Div" class="theaterKidFreebieDivs">
@@ -876,14 +841,15 @@
                     <option id="theaterKidHistoryFreebie03" class="theaterKidFreebie03Knowledge">History</option>
                     <option id="theaterKidMedicineFreebie03" class="theaterKidFreebie03Knowledge">Medicine</option>
                     <option id="theaterKidNatureFreebie03" class="theaterKidFreebie03Knowledge">Nature</option>
+                    <option id="theaterKidReligionFreebie03" class="theaterKidFreebie03Knowledge">Religion</option>
                     <option id="theaterKidScienceFreebie03" class="theaterKidFreebie03Knowledge">Science</option>
                     <option id="theaterKidSpecialFreebie03" class="theaterKidFreebie03Knowledge">Special</option>
-                    <option id="theaterKidTheologyFreebie03" class="theaterKidFreebie03Knowledge">Theology</option>
                 </select>
             </div>
             <br>
             <button id="theaterKidCliqueBasedAbilitiesButton" type="button" onclick="applyTheaterKidAbilities()">Commit Choices</button>
             <button id="theaterKidCliqueBasedAbilitiesResetButton" type="button" onclick="resetTheaterKidAbilities()">Reset</button> 
+            <br>
         </div>
         <div id="lonerAbilities">
             <label>Loner: Talent</label>
@@ -928,7 +894,7 @@
                 <option id="lonerSkill02Socializing" class="lonerSkill02">Socializing</option>
             </select>
             <br>
-            <label>Loner: Skill 1</label>
+            <label>Loner: Skill 3</label>
             <select id="lonerSkill03">
                 <option id="lonerSkill03Blank"></option>
                 <option id="lonerSkill03Firearms" class="lonerSkill03">Firearms</option>
@@ -943,7 +909,7 @@
             </select>
             <br>
             <label>Loner: One Freebie</label><br>
-            <input type="radio" id="lonerFreebieTalentRadio" name="lonerFreebie" onclick="presentLonerFreebieTalent()">
+            <input id="lonerFreebieTalentRadio" type="radio" name="lonerFreebie" onclick="presentLonerFreebieTalent()">
             <label for="lonerFreebieTalentRadio">Talent:</label>
             <div id="lonerFreebieTalentDiv" class="lonerFreebieDivs">
                 <select id="lonerFreebieTalents">
@@ -960,7 +926,7 @@
                 </select>
             </div>
             <br>   
-            <input type="radio" id="lonerFreebieSkillRadio" name="lonerFreebie" onclick="presentLonerFreebieSkill()">
+            <input id="lonerFreebieSkillRadio" type="radio" name="lonerFreebie" onclick="presentLonerFreebieSkill()">
             <label for="lonerFreebieSkillRadio">Skill:</label>
             <div id="lonerFreebieSkillDiv" class="lonerFreebieDivs">
                 <select id="lonerFreebieSkills">
@@ -977,7 +943,7 @@
                 </select>
             </div>
             <br>
-            <input type="radio" id="lonerFreebieKnowledgeRadio" name="lonerFreebie" onclick="presentLonerFreebieKnowledge()">
+            <input id="lonerFreebieKnowledgeRadio" type="radio" name="lonerFreebie" onclick="presentLonerFreebieKnowledge()">
             <label for="lonerFreebieKnowledgeRadio">Knowledge:</label>
             <div id="lonerFreebieKnowledgeDiv" class="lonerFreebieDivs">
                 <select id="lonerFreebieKnowledges">
@@ -988,14 +954,15 @@
                     <option id="lonerHistoryFreebie" class="lonerFreebieKnowledge">History</option>
                     <option id="lonerMedicineFreebie" class="lonerFreebieKnowledge">Medicine</option>
                     <option id="lonerNatureFreebie" class="lonerFreebieKnowledge">Nature</option>
+                    <option id="lonerReligionFreebie" class="lonerFreebieKnowledge">Religion</option>
                     <option id="lonerScienceFreebie" class="lonerFreebieKnowledge">Science</option>
                     <option id="lonerSpecialFreebie" class="lonerFreebieKnowledge">Special</option>
-                    <option id="lonerTheologyFreebie" class="lonerFreebieKnowledge">Theology</option>
                 </select>
             </div>
         <br>
         <button id="lonerCliqueBasedAbilitiesButton" type="button" onclick="applyLonerAbilities()">Commit Choices</button>
         <button id="lonerCliqueBasedAbilitiesResetButton" type="button" onclick="resetLonerAbilities()">Reset</button>
+        <br>
         </div>
         <div id="chameleonAbilities">
             <label>Chameleon: Talent</label>
@@ -1027,7 +994,7 @@
             </select>
             <br>
             <label>Chameleon: Knowledge</label>
-            <select>
+            <select id="chameleonKnowledge">
                 <option id="chameleonKnowledgeBlank"></option>                
                 <option id="chameleonKnowledgeArcana" class="chameleonKnowledge">Arcana</option>
                 <option id="chameleonKnowledgeCodeBreaking" class="chameleonKnowledge">Code-Breaking</option>
@@ -1035,9 +1002,9 @@
                 <option id="chameleonKnowledgeHistory" class="chameleonKnowledge">History</option>
                 <option id="chameleonKnowledgeMedicine" class="chameleonKnowledge">Medicine</option>
                 <option id="chameleonKnowledgeNature" class="chameleonKnowledge">Nature</option>
+                <option id="chameleonKnowledgeReligion" class="chameleonKnowledge">Religion</option>
                 <option id="chameleonKnowledgeScience" class="chameleonKnowledge">Science</option>
                 <option id="chameleonKnowledgeSpecial" class="chameleonKnowledge">Special</option>
-                <option id="chameleonKnowledgeTheology" class="chameleonKnowledge">Theology</option>
             </select>
             <br>
             <div id="chameleonFreebie01Div" class="chameleonFreebieDivs">
@@ -1080,9 +1047,9 @@
                     <option id="chameleonHistoryFreebie01" class="chameleonFreebie01Knowledge">History</option>
                     <option id="chameleonMedicineFreebie01" class="chameleonFreebie01Knowledge">Medicine</option>
                     <option id="chameleonNatureFreebie01" class="chameleonFreebie01Knowledge">Nature</option>
+                    <option id="chameleonReligionFreebie01" class="chameleonFreebie01Knowledge">Religion</option>
                     <option id="chameleonScienceFreebie01" class="chameleonFreebie01Knowledge">Science</option>
                     <option id="chameleonSpecialFreebie01" class="chameleonFreebie01Knowledge">Special</option>
-                    <option id="chameleonTheologyFreebie01" class="chameleonFreebie01Knowledge">Theology</option>
                 </select>
             </div>
             <div id="chameleonFreebie02Div" class="chameleonFreebieDivs">
@@ -1125,13 +1092,14 @@
                     <option id="chameleonHistoryFreebie02" class="chameleonFreebie02Knowledge">History</option>
                     <option id="chameleonMedicineFreebie02" class="chameleonFreebie02Knowledge">Medicine</option>
                     <option id="chameleonNatureFreebie02" class="chameleonFreebie02Knowledge">Nature</option>
+                    <option id="chameleonReligionFreebie02" class="chameleonFreebie02Knowledge">Religion</option>
                     <option id="chameleonScienceFreebie02" class="chameleonFreebie02Knowledge">Science</option>
                     <option id="chameleonSpecialFreebie02" class="chameleonFreebie02Knowledge">Special</option>
-                    <option id="chameleonTheologyFreebie02" class="chameleonFreebie02Knowledge">Theology</option>
                 </select>
             </div>
-         <button id="chameleonCliqueBasedAbilitiesButton" type="button" onclick="applyChameleonAbilities()">Commit Choices</button>
-         <button id="chameleonCliqueBasedAbilitiesResetButton" type="button" onclick="resetChameleonAbilities()">Reset</button> 
+        <button id="chameleonCliqueBasedAbilitiesButton" type="button" onclick="applyChameleonAbilities()">Commit Choices</button>
+        <button id="chameleonCliqueBasedAbilitiesResetButton" type="button" onclick="resetChameleonAbilities()">Reset</button> 
+        <br>
         </div>
     </div>
     <br>
@@ -1155,7 +1123,7 @@
         <tr>
             <td>Acting</td>
             <td>
-                <select id="acting" oncha   nge="abilityChange()">
+                <select id="acting" class="talent" onchange="abilityChange()">
                     <option id="acting00" class="talentUntrained">Untrained</option>
                     <option id="acting01" class="talentProficient">Proficient</option>
                     <option id="acting02" class="talentSkilled">Skilled</option>
@@ -1163,7 +1131,7 @@
             <td id="actingModifier">0</td>
             <td>Firearms:</td>
             <td>
-                <select id="firearms" onchange="abilityChange()">
+                <select id="firearms" class="skill" onchange="abilityChange()">
                     <option id="firearms00" class="skillUntrained">Untrained</option>
                     <option id="firearms01" class="skillProficient">Proficient</option>
                     <option id="firearms02" class="skillSkilled">Skilled</option>
@@ -1172,7 +1140,7 @@
             <td id="firearmsModifier">-2</td>
             <td>Arcana:</td>
             <td>
-                <select id="arcana" onchange="abilityChange()">
+                <select id="arcana" class="knowledge" onchange="abilityChange()">
                     <option id="arcana00" class="knowledgeUntrained">Untrained</option>
                     <option id="arcana01" class="knowledgeProficient">Proficient</option>
                     <option id="arcana02" class="knowledgeSkilled">Skilled</option>
@@ -1183,7 +1151,7 @@
         <tr>
             <td>Alertness:</td>
             <td>
-                <select id="alertness" onchange="abilityChange()">
+                <select id="alertness" class="talent" onchange="abilityChange()">
                     <option id="alertness00" class="talentUntrained">Untrained</option>
                     <option id="alertness01" class="talentProficient">Proficient</option>
                     <option id="alertness02" class="talentSkilled">Skilled</option>
@@ -1192,7 +1160,7 @@
             <td id="alertnessModifier">0</td>
             <td>Investigation:</td>
             <td>
-                <select id="investigation" onchange="abilityChange()">
+                <select id="investigation" class="skill" onchange="abilityChange()">
                     <option id="investigation00" class="skillUntrained">Untrained</option>
                     <option id="investigation01" class="skillProficient">Proficient</option>
                     <option id="investigation02" class="skillSkilled">Skilled</option>
@@ -1201,7 +1169,7 @@
             <td id="investigationModifier">-2</td>
             <td>Code-Breaking:</td>
             <td>
-                <select id="codeBreaking" onchange="abilityChange()">
+                <select id="codeBreaking" class="knowledge" onchange="abilityChange()">
                     <option id="codeBreaking00" class="knowledgeUntrained">Untrained</option>
                     <option id="codeBreaking01" class="knowledgeProficient">Proficient</option>
                     <option id="codeBreaking02" class="knowledgeSkilled">Skilled</option>
@@ -1212,7 +1180,7 @@
         <tr>
             <td>Athletics:</td>
             <td>
-                <select id="athletics" onchange="abilityChange()">
+                <select id="athletics" class="talent" onchange="abilityChange()">
                     <option id="athletics00" class="talentUntrained">Untrained</option>
                     <option id="athletics01" class="talentProficient">Proficient</option>
                     <option id="athletics02" class="talentSkilled">Skilled</option>
@@ -1221,7 +1189,7 @@
             <td id="athleticsModifier">0</td>
             <td>Leadership:</td>
             <td>
-                <select id="leadership" onchange="abilityChange()">
+                <select id="leadership" class="skill" onchange="abilityChange()">
                     <option id="leadership00" class="skillUntrained">Untrained</option>
                     <option id="leadership01" class="skillProficient">Proficient</option>
                     <option id="leadership02" class="skillSkilled">Skilled</option>
@@ -1230,7 +1198,7 @@
             <td id="leadershipModifier">-2</td>
             <td>Computers:</td>
             <td>
-                <select id="computers" onchange="abilityChange()">
+                <select id="computers" class="knowledge" onchange="abilityChange()">
                     <option id="computers00" class="knowledgeUntrained">Untrained</option>
                     <option id="computers01" class="knowledgeProficient">Proficient</option>
                     <option id="computers02" class="knowledgeSkilled">Skilled</option>
@@ -1241,7 +1209,7 @@
         <tr>
             <td>Brawling:</td>
             <td>
-                <select id="brawling" onchange="abilityChange()">
+                <select id="brawling" class="talent" onchange="abilityChange()">
                     <option id="brawling00" class="talentUntrained">Untrained</option>
                     <option id="brawling01" class="talentProficient">Proficient</option>
                     <option id="brawling02" class="talentSkilled">Skilled</option>
@@ -1250,7 +1218,7 @@
             <td id="brawlingModifier">0</td>
             <td>Lock-Picking:</td>
             <td>
-                <select id="lockPicking" onchange="abilityChange()">
+                <select id="lockPicking" class="skill" onchange="abilityChange()">
                     <option id="lockPicking00" class="skillUntrained">Untrained</option>
                     <option id="lockPicking01" class="skillProficient">Proficient</option>
                     <option id="lockPicking02" class="skillSkilled">Skilled</option>
@@ -1259,7 +1227,7 @@
             <td id="lockPickingModifier">-2</td>
             <td>History:</td>
             <td>
-                <select id="history" onchange="abilityChange()">
+                <select id="history" class="knowledge" onchange="abilityChange()">
                     <option id="history00" class="knowledgeUntrained">Untrained</option>
                     <option id="history01" class="knowledgeProficient">Proficient</option>
                     <option id="history02" class="knowledgeSkilled">Skilled</option>
@@ -1270,7 +1238,7 @@
         <tr>
             <td>Calming Down:</td>
             <td>
-                <select id="calmingDown" onchange="abilityChange()">
+                <select id="calmingDown" class="talent" onchange="abilityChange()">
                     <option id="calmingDown00" class="talentUntrained">Untrained</option>
                     <option id="calmingDown01" class="talentProficient">Proficient</option>
                     <option id="calmingDown02" class="talentSkilled">Skilled</option>
@@ -1279,7 +1247,7 @@
             <td id="calmingDownModifier">0</td>
             <td>Lying:</td>
             <td>
-                <select id="lying" onchange="abilityChange()">
+                <select id="lying" class="skill" onchange="abilityChange()">
                     <option id="lying00" class="skillUntrained">Untrained</option>
                     <option id="lying01" class="skillProficient">Proficient</option>
                     <option id="lying02" class="skillSkilled">Skilled</option>
@@ -1288,7 +1256,7 @@
             <td id="lyingModifier">-2</td>
             <td>Medicine:</td>
             <td>
-                <select id="medicine" onchange="abilityChange()">
+                <select id="medicine" class="knowledge" onchange="abilityChange()">
                     <option id="medicine00" class="knowledgeUntrained">Untrained</option>
                     <option id="medicine01" class="knowledgeProficient">Proficient</option>
                     <option id="medicine02" class="knowledgeSkilled">Skilled</option>
@@ -1299,7 +1267,7 @@
         <tr>
             <td>Empathy:</td>
             <td>
-                <select id="empathy" onchange="abilityChange()">
+                <select id="empathy" class="talent" onchange="abilityChange()">
                     <option id="empathy00" class="talentUntrained">Untrained</option>
                     <option id="empathy01" class="talentProficient">Proficient</option>
                     <option id="empathy02" class="talentSkilled">Skilled</option>
@@ -1308,7 +1276,7 @@
             <td id="empathyModifier">0</td>
             <td>Melee:</td>
             <td>
-                <select id="melee" onchange="abilityChange()">
+                <select id="melee" class="skill" onchange="abilityChange()">
                     <option id="melee00" class="skillUntrained">Untrained</option>
                     <option id="melee01" class="skillProficient">Proficient</option>
                     <option id="melee02" class="skillSkilled">Skilled</option>
@@ -1317,7 +1285,7 @@
             <td id="meleeModifier">-2</td>
             <td>Nature:</td>
             <td>
-                <select id="nature" onchange="abilityChange()">
+                <select id="nature" class="knowledge" onchange="abilityChange()">
                     <option id="nature00" class="knowledgeUntrained">Untrained</option>
                     <option id="nature01" class="knowledgeProficient">Proficient</option>
                     <option id="nature02" class="knowledgeSkilled">Skilled</option>
@@ -1328,7 +1296,7 @@
         <tr>
             <td>Intimidation:</td>
             <td>
-                <select id="intimidation" onchange="abilityChange()">
+                <select id="intimidation" class="talent" onchange="abilityChange()">
                     <option id="intimidation00" class="talentUntrained">Untrained</option>
                     <option id="intimidation01" class="talentProficient">Proficient</option>
                     <option id="intimidation02" class="talentSkilled">Skilled</option>
@@ -1337,27 +1305,27 @@
             <td id="intimidationModifier">0</td>
             <td>Music:</td>
             <td>
-                <select id="music" onchange="abilityChange()">
+                <select id="music" class="skill" onchange="abilityChange()">
                     <option id="music00" class="skillUntrained">Untrained</option>
                     <option id="music01" class="skillProficient">Proficient</option>
                     <option id="music02" class="skillSkilled">Skilled</option>
                 </select>
             </td>
             <td id="musicModifier">-2</td>
-            <td>Science:</td>
+            <td>Religion</td>
             <td>
-                <select id="science" onchange="abilityChange()">
-                    <option id="science00" class="knowledgeUntrained">Untrained</option>
-                    <option id="science01" class="knowledgeProficient">Proficient</option>
-                    <option id="science02" class="knowledgeSkilled">Skilled</option>
+                <select id="religion" class="knowledge" onchange="abilityChange()">
+                    <option id="religion00" class="knowledgeUntrained">Untrained</option>
+                    <option id="religion01" class="knowledgeProficient">Proficient</option>
+                    <option id="religion02" class="knowledgeSkilled">Skilled</option>
                 </select>
             </td>
-            <td id="scienceModifier">-4</td>
+            <td id="religionModifier">-4</td>
         </tr>
         <tr>
             <td>Memory:</td>
             <td>
-                <select id="memory" onchange="abilityChange()">
+                <select id="memory" class="talent" onchange="abilityChange()">
                     <option id="memory00" class="talentUntrained">Untrained</option>
                     <option id="memory01" class="talentProficient">Proficient</option>
                     <option id="memory02" class="talentSkilled">Skilled</option>
@@ -1366,27 +1334,27 @@
             <td id="memoryModifier">0</td>
             <td>Security:</td>
             <td>
-                <select id="security" onchange="abilityChange()">
+                <select id="security" class="skill" onchange="abilityChange()">
                     <option id="security00" class="skillUntrained">Untrained</option>
                     <option id="security01" class="skillProficient">Proficient</option>
                     <option id="security02" class="skillSkilled">Skilled</option>
                 </select>
             </td>
             <td id="securityModifier">-2</td>
-            <td>Special:<span id="specialSpan"></span></td>
+            <td>Science:</td>
             <td>
-                <select id="special" onchange="abilityChange()">
-                    <option id="special00" class="knowledgeUntrained">Untrained</option>
-                    <option id="special01" class="knowledgeProficient">Proficient</option>
-                    <option id="special02" class="knowledgeSkilled">Skilled</option>
+                <select id="science" class="knowledge" onchange="abilityChange()">
+                    <option id="science00" class="knowledgeUntrained">Untrained</option>
+                    <option id="science01" class="knowledgeProficient">Proficient</option>
+                    <option id="science02" class="knowledgeSkilled">Skilled</option>
                 </select>
             </td>
-            <td id="specialModifier">-4</td>
+            <td id="scienceModifier">-4</td>
         </tr>
         <tr>
             <td>Stealth:</td>
             <td>
-                <select id="stealth" onchange="abilityChange()">
+                <select id="stealth" class="talent" onchange="abilityChange()">
                     <option id="stealth00" class="talentUntrained">Untrained</option>
                     <option id="stealth01" class="talentProficient">Proficient</option>
                     <option id="stealth02" class="talentSkilled">Skilled</option>
@@ -1395,22 +1363,22 @@
             <td id="stealthModifier">0</td>
             <td>Socializing:</td>
             <td>
-                <select id="socializing" onchange="abilityChange()">
+                <select id="socializing" class="skill" onchange="abilityChange()">
                     <option id="socializing00" class="skillUntrained">Untrained</option>
                     <option id="socializing01" class="skillProficient">Proficient</option>
                     <option id="socializing02" class="skillSkilled">Skilled</option>
                 </select>
             </td>
             <td id="socializingModifier">-2</td>
-            <td>Theology</td>
+            <td>Special:<span id="specialSpan"></span></td>
             <td>
-                <select id="theology" onchange="abilityChange()">
-                    <option id="theology00" class="knowledgeUntrained">Untrained</option>
-                    <option id="theology01" class="knowledgeProficient">Proficient</option>
-                    <option id="theology02" class="knowledgeSkilled">Skilled</option>
+                <select id="special" class="knowledge" onchange="abilityChange()">
+                    <option id="special00" class="knowledgeUntrained">Untrained</option>
+                    <option id="special01" class="knowledgeProficient">Proficient</option>
+                    <option id="special02" class="knowledgeSkilled">Skilled</option>
                 </select>
             </td>
-            <td id="theologyModifier">-4</td>
+            <td id="specialModifier">-4</td>
         </tr>
     </table>
     <br>
@@ -1455,32 +1423,15 @@
         </tr>
         <tr>
             <td>Talents:</td>
-            <td id="talentRanksLeft"></td>
+            <td id="talentRanksLeft">0</td>
         </tr>
         <tr>
             <td>Skills:</td>
-            <td id="skillRanksLeft"></td>
+            <td id="skillRanksLeft">0</td>
         </tr>
         <tr>
             <td>Knowledges:</td>
-            <td id="knowledgeRanksLeft"></td>
-        </tr>
-    </table>
-    <table id="hiddenTable">
-        <tr>
-            <th colspan="2">Ability Ranks From Clique</th>
-        </tr>
-        <tr>
-            <td>Talents:</td>
-            <td><input type="number" id="cliqueTalentRanks"></td>
-        </tr>
-        <tr>
-            <td>Skills:</td>
-            <td><input type="number" id="cliqueSkillRanks"></td>
-        </tr>
-        <tr>
-            <td>Knowledges:</td>
-            <td><input type="number" id="cliqueKnowledgeRanks"></td>
+            <td id="knowledgeRanksLeft">0</td>
         </tr>
     </table>
     <br>

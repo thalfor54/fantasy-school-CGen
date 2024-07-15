@@ -71,10 +71,6 @@ let theaterKidAbilities = document.getElementById("theaterKidAbilities")
 let lonerAbilities = document.getElementById("lonerAbilities")
 let chameleonAbilities = document.getElementById("chameleonAbilities")
 
-let cliqueTalentRanks = document.getElementById("cliqueTalentRanks")
-let cliqueSkillRanks = document.getElementById("cliqueSkillRanks")
-let cliqueKnowledgeRanks = document.getElementById("cliqueKnowledgeRanks")
-
 let witchAttributePicks = document.getElementById("witchAttributePicks")
 
 let speciesModifierArray = [strengthSpeciesModifier, dexteritySpeciesModifier, constitutionSpeciesModifier, resilienceSpeciesModifier, persuasionSpeciesModifier, manipulationSpeciesModifier, ingratiationSpeciesModifier, charismaSpeciesModifier, perceptionSpeciesModifier, insightSpeciesModifier, reasonSpeciesModifier, intuitionSpeciesModifier, focusSpeciesModifier, resolveSpeciesModifier, selfControlSpeciesModifier, agitatedSpeciesModifier, angrySpeciesModifier, hornySpeciesModifier, melancholySpeciesModifier, fortitudeSpeciesModifier, reflexSpeciesModifier, mindSpeciesModifier, willSpeciesModifier]
@@ -88,6 +84,77 @@ let resetCliqueAbilitiesArray = [resetNerdAbilities, resetJockAbilities, resetPr
 let cliqueTalents = document.getElementById("cliqueTalents")
 let cliqueSkills = document.getElementById("cliqueSkills")
 let cliqueKnowledges = document.getElementById("cliqueKnowledges")
+
+let armorClass = document.getElementById("armorClass")
+let initiative = document.getElementById("initiative")
+let hitPoints = document.getElementById("hitPoints")
+
+function calculateFeelsResistancesAndSaves() {
+    let agitatedSpeciesModifier = document.getElementById("agitatedSpeciesModifier").innerHTML
+    let agitatedCliqueModifier = document.getElementById("agitatedCliqueModifier").innerHTML
+    agitatedCliqueModifier = agitatedCliqueModifier * -1
+    let agitatedTotal = document.getElementById("agitatedTotal")
+    agitatedTotal.innerHTML = agitatedSpeciesModifier - agitatedCliqueModifier
+    let angrySpeciesModifier = document.getElementById("angrySpeciesModifier").innerHTML
+    let angryCliqueModifier = document.getElementById("angryCliqueModifier").innerHTML
+    angryCliqueModifier = angryCliqueModifier * -1
+    let angryTotal = document.getElementById("angryTotal")
+    angryTotal.innerHTML = angrySpeciesModifier - angryCliqueModifier
+    let hornySpeciesModifier = document.getElementById("hornySpeciesModifier").innerHTML
+    let hornyCliqueModifier = document.getElementById("hornyCliqueModifier").innerHTML
+    hornyCliqueModifier = hornyCliqueModifier * -1
+    let hornyTotal = document.getElementById("hornyTotal")
+    hornyTotal.innerHTML = hornySpeciesModifier - hornyCliqueModifier
+    let melancholySpeciesModifier = document.getElementById("melancholySpeciesModifier").innerHTML
+    let melancholyCliqueModifier = document.getElementById("melancholyCliqueModifier").innerHTML
+    melancholyCliqueModifier = melancholyCliqueModifier * -1
+    let melancholyTotal = document.getElementById("melancholyTotal")
+    melancholyTotal.innerHTML = melancholySpeciesModifier - melancholyCliqueModifier
+    let focusSpeciesModifier = document.getElementById("focusSpeciesModifier").innerHTML
+    let focusCliqueModifier = document.getElementById("focusCliqueModifier").innerHTML
+    focusCliqueModifier = focusCliqueModifier * -1
+    let focusTotal = document.getElementById("focusTotal")
+    focusTotal.innerHTML = focusSpeciesModifier - focusCliqueModifier
+    let resolveSpeciesModifier = document.getElementById("resolveSpeciesModifier").innerHTML
+    let resolveCliqueModifier = document.getElementById("resolveCliqueModifier").innerHTML
+    resolveCliqueModifier = resolveCliqueModifier * -1
+    let resolveTotal = document.getElementById("resolveTotal")
+    resolveTotal.innerHTML = resolveSpeciesModifier - resolveCliqueModifier
+    let selfControlSpeciesModifier = document.getElementById("selfControlSpeciesModifier").innerHTML
+    let selfControlCliqueModifier = document.getElementById("selfControlCliqueModifier").innerHTML
+    selfControlCliqueModifier = selfControlCliqueModifier * -1
+    let selfControlTotal = document.getElementById("selfControlTotal")
+    selfControlTotal.innerHTML = selfControlSpeciesModifier - selfControlCliqueModifier
+    let fortitudeBaseScore = document.getElementById("fortitudeBaseScore").innerHTML
+    let fortitudeSpeciesModifier = document.getElementById("fortitudeSpeciesModifier").innerHTML
+    let fortitudeCliqueModifier = document.getElementById("fortitudeCliqueModifier").innerHTML
+    let fortitudeTotal = document.getElementById("fortitudeTotal")
+    fortitudeSpeciesModifier = fortitudeSpeciesModifier * -1
+    fortitudeCliqueModifier = fortitudeCliqueModifier * -1
+    fortitudeTotal.innerHTML = fortitudeBaseScore - fortitudeSpeciesModifier - fortitudeCliqueModifier
+    let reflexBaseScore = document.getElementById("reflexBaseScore").innerHTML
+    let reflexSpeciesModifier = document.getElementById("reflexSpeciesModifier").innerHTML
+    let reflexCliqueModifier = document.getElementById("reflexCliqueModifier").innerHTML
+    let reflexTotal = document.getElementById("reflexTotal")
+    reflexSpeciesModifier = reflexSpeciesModifier * -1
+    reflexCliqueModifier = reflexCliqueModifier * -1
+    reflexTotal.innerHTML = reflexBaseScore - reflexSpeciesModifier - reflexCliqueModifier
+    let mindBaseScore = document.getElementById("mindBaseScore").innerHTML
+    let mindSpeciesModifier = document.getElementById("mindSpeciesModifier").innerHTML
+    let mindCliqueModifier = document.getElementById("mindCliqueModifier").innerHTML
+    let mindTotal = document.getElementById("mindTotal")
+    mindSpeciesModifier = mindSpeciesModifier * -1
+    mindCliqueModifier = mindCliqueModifier * -1
+    mindTotal.innerHTML = mindBaseScore - mindSpeciesModifier - mindCliqueModifier
+    let willBaseScore = document.getElementById("willBaseScore").innerHTML
+    let willSpeciesModifier = document.getElementById("willSpeciesModifier").innerHTML
+    let willCliqueModifier = document.getElementById("willCliqueModifier").innerHTML
+    let willTotal = document.getElementById("willTotal")
+    willSpeciesModifier = willSpeciesModifier * -1
+    willCliqueModifier = willCliqueModifier * -1
+    willTotal.innerHTML = willBaseScore - willSpeciesModifier - willCliqueModifier
+
+}
 
 function changeStrengthRow() {
     let strengthScore = document.getElementById("strengthScore").value
@@ -228,6 +295,13 @@ function changeDexterityRow() {
     reflexBaseSave = reflexBaseSave * -1
     reflexBaseSave = Math.floor(reflexBaseSave / 2)
     reflexBaseScore.innerHTML = reflexBaseSave
+    let dexterityModifyInitiative = document.getElementById("dexterityTotalModifier").innerHTML
+    dexterityModifyInitiative = dexterityModifyInitiative * -1
+    let intuitionModifyInitiative = document.getElementById("intuitionTotalModifier").innerHTML
+    let initiativeTotal = dexterityModifyInitiative - intuitionModifyInitiative
+    initiativeTotal = initiativeTotal * -1
+    initiativeTotal = Math.floor(initiativeTotal / 2)
+    initiative.innerHTML = initiativeTotal    
     calculateFeelsResistancesAndSaves()
 }
 
@@ -303,6 +377,7 @@ function changeConstitutionRow() {
     fortitudeBaseSave = fortitudeBaseSave * -1
     fortitudeBaseSave = Math.floor(fortitudeBaseSave / 2)
     fortitudeBaseScore.innerHTML = fortitudeBaseSave
+    calculateHitPoints()
     calculateFeelsResistancesAndSaves()
 }
 
@@ -951,73 +1026,33 @@ function changeIntuitionRow() {
     mindBaseSave = mindBaseSave * -1
     mindBaseSave = Math.floor(mindBaseSave / 2)
     mindBaseScore.innerHTML = mindBaseSave
+    let dexterityModifyInitiative = document.getElementById("dexterityTotalModifier").innerHTML
+    dexterityModifyInitiative = dexterityModifyInitiative * -1
+    let intuitionModifyInitiative = document.getElementById("intuitionTotalModifier").innerHTML
+    let initiativeTotal = dexterityModifyInitiative - intuitionModifyInitiative
+    initiativeTotal = initiativeTotal * -1
+    initiativeTotal = Math.floor(initiativeTotal / 2)
+    initiative.innerHTML = initiativeTotal    
     calculateFeelsResistancesAndSaves()
 }
 
-function calculateFeelsResistancesAndSaves() {
-    let agitatedSpeciesModifier = document.getElementById("agitatedSpeciesModifier").innerHTML
-    let agitatedCliqueModifier = document.getElementById("agitatedCliqueModifier").innerHTML
-    agitatedCliqueModifier = agitatedCliqueModifier * -1
-    let agitatedTotal = document.getElementById("agitatedTotal")
-    agitatedTotal.innerHTML = agitatedSpeciesModifier - agitatedCliqueModifier
-    let angrySpeciesModifier = document.getElementById("angrySpeciesModifier").innerHTML
-    let angryCliqueModifier = document.getElementById("angryCliqueModifier").innerHTML
-    angryCliqueModifier = angryCliqueModifier * -1
-    let angryTotal = document.getElementById("angryTotal")
-    angryTotal.innerHTML = angrySpeciesModifier - angryCliqueModifier
-    let hornySpeciesModifier = document.getElementById("hornySpeciesModifier").innerHTML
-    let hornyCliqueModifier = document.getElementById("hornyCliqueModifier").innerHTML
-    hornyCliqueModifier = hornyCliqueModifier * -1
-    let hornyTotal = document.getElementById("hornyTotal")
-    hornyTotal.innerHTML = hornySpeciesModifier - hornyCliqueModifier
-    let melancholySpeciesModifier = document.getElementById("melancholySpeciesModifier").innerHTML
-    let melancholyCliqueModifier = document.getElementById("melancholyCliqueModifier").innerHTML
-    melancholyCliqueModifier = melancholyCliqueModifier * -1
-    let melancholyTotal = document.getElementById("melancholyTotal")
-    melancholyTotal.innerHTML = melancholySpeciesModifier - melancholyCliqueModifier
-    let focusSpeciesModifier = document.getElementById("focusSpeciesModifier").innerHTML
-    let focusCliqueModifier = document.getElementById("focusCliqueModifier").innerHTML
-    focusCliqueModifier = focusCliqueModifier * -1
-    let focusTotal = document.getElementById("focusTotal")
-    focusTotal.innerHTML = focusSpeciesModifier - focusCliqueModifier
-    let resolveSpeciesModifier = document.getElementById("resolveSpeciesModifier").innerHTML
-    let resolveCliqueModifier = document.getElementById("resolveCliqueModifier").innerHTML
-    resolveCliqueModifier = resolveCliqueModifier * -1
-    let resolveTotal = document.getElementById("resolveTotal")
-    resolveTotal.innerHTML = resolveSpeciesModifier - resolveCliqueModifier
-    let selfControlSpeciesModifier = document.getElementById("selfControlSpeciesModifier").innerHTML
-    let selfControlCliqueModifier = document.getElementById("selfControlCliqueModifier").innerHTML
-    selfControlCliqueModifier = selfControlCliqueModifier * -1
-    let selfControlTotal = document.getElementById("selfControlTotal")
-    selfControlTotal.innerHTML = selfControlSpeciesModifier - selfControlCliqueModifier
-    let fortitudeBaseScore = document.getElementById("fortitudeBaseScore").innerHTML
-    let fortitudeSpeciesModifier = document.getElementById("fortitudeSpeciesModifier").innerHTML
-    let fortitudeCliqueModifier = document.getElementById("fortitudeCliqueModifier").innerHTML
-    let fortitudeTotal = document.getElementById("fortitudeTotal")
-    fortitudeSpeciesModifier = fortitudeSpeciesModifier * -1
-    fortitudeCliqueModifier = fortitudeCliqueModifier * -1
-    fortitudeTotal.innerHTML = fortitudeBaseScore - fortitudeSpeciesModifier - fortitudeCliqueModifier
-    let reflexBaseScore = document.getElementById("reflexBaseScore").innerHTML
-    let reflexSpeciesModifier = document.getElementById("reflexSpeciesModifier").innerHTML
-    let reflexCliqueModifier = document.getElementById("reflexCliqueModifier").innerHTML
-    let reflexTotal = document.getElementById("reflexTotal")
-    reflexSpeciesModifier = reflexSpeciesModifier * -1
-    reflexCliqueModifier = reflexCliqueModifier * -1
-    reflexTotal.innerHTML = reflexBaseScore - reflexSpeciesModifier - reflexCliqueModifier
-    let mindBaseScore = document.getElementById("mindBaseScore").innerHTML
-    let mindSpeciesModifier = document.getElementById("mindSpeciesModifier").innerHTML
-    let mindCliqueModifier = document.getElementById("mindCliqueModifier").innerHTML
-    let mindTotal = document.getElementById("mindTotal")
-    mindSpeciesModifier = mindSpeciesModifier * -1
-    mindCliqueModifier = mindCliqueModifier * -1
-    mindTotal.innerHTML = mindBaseScore - mindSpeciesModifier - mindCliqueModifier
-    let willBaseScore = document.getElementById("willBaseScore").innerHTML
-    let willSpeciesModifier = document.getElementById("willSpeciesModifier").innerHTML
-    let willCliqueModifier = document.getElementById("willCliqueModifier").innerHTML
-    let willTotal = document.getElementById("willTotal")
-    willSpeciesModifier = willSpeciesModifier * -1
-    willCliqueModifier = willCliqueModifier * -1
-    willTotal.innerHTML = willBaseScore - willSpeciesModifier - willCliqueModifier
+let vampire = document.getElementById("vampire")
+let werewolf = document.getElementById("werewolf")
+let witch = document.getElementById("witch")
+let fairy = document.getElementById("fairy")
+
+function calculateHitPoints() {
+    let constitutionForHitPoints = document.getElementById("constitutionTotalModifier").innerHTML
+    constitutionForHitPoints = constitutionForHitPoints * -1
+    if (vampire.checked == true) {
+        hitPoints.innerHTML = 8 - constitutionForHitPoints
+    }
+    else if (werewolf.checked == true) {
+        hitPoints.innerHTML = 10 - constitutionForHitPoints
+    }
+    else if (witch.checked == true || fairy.checked == true) {
+        hitPoints.innerHTML = 6 - constitutionForHitPoints
+    }
 }
 
 function vampireModifiers() {
@@ -1041,6 +1076,8 @@ function vampireModifiers() {
     for (i=0; i<12; i++) {
         changeRowArray[i]()
     }
+    armorClass.innerHTML = 13
+    calculateHitPoints()
     calculateFeelsResistancesAndSaves()
 }
 
@@ -1063,6 +1100,8 @@ function werewolfModifiers() {
     for (i=0; i<12; i++) {
         changeRowArray[i]()
     }
+    armorClass = 10
+    calculateHitPoints()
     calculateFeelsResistancesAndSaves()
 }
 
@@ -1164,6 +1203,8 @@ function witchModifiers() {
     for (i=0; i<12; i++) {
         changeRowArray[i]()
     }
+    armorClass = 10
+    calculateHitPoints()
     calculateFeelsResistancesAndSaves()
 }
 
@@ -1232,6 +1273,8 @@ function fairyModifiers() {
     for (i=0; i<12; i++) {
         changeRowArray[i]()
     }
+    armorClass = 10    
+    calculateHitPoints()
     calculateFeelsResistancesAndSaves()
 }
 
@@ -1255,10 +1298,6 @@ function nerdModifiers() {
     // display nerdAttributePicks and nerdAbilities
     nerdAttributePicks.style.display = "block"
     nerdAbilities.style.display = "inline"
-    // set clique ability ranks to zero
-    cliqueTalentRanks.value = 0
-    cliqueSkillRanks.value = 0
-    cliqueKnowledgeRanks.value = 0
     // generate attribute bonus drop-down menus
     let nerdAttributeChoices = ['', 'Perception', 'Insight', 'Reason', 'Intuition']
     let nerdBonusAttributeOption01 = document.createElement("select")
@@ -1392,10 +1431,6 @@ function jockModifiers() {
     // display jockAttributePicks
     jockAttributePicks.style.display = "block"
     jockAbilities.style.display = "inline"
-    // set clique ability rank trackers to zero
-    cliqueTalentRanks.value = 0
-    cliqueSkillRanks.value = 0
-    cliqueKnowledgeRanks.value = 0
     // generate physical-only attribute bonus drop-down menu
     let jockPhysicalAttributeChoices = ['', 'Strength', 'Dexterity', 'Constitution', 'Resilience']
     let jockPhysicalAttributeOption = document.createElement("select")
@@ -1531,10 +1566,6 @@ function prepModifiers() {
     // display prepAttributePicks
     prepAttributePicks.style.display = "block"
     prepAbilities.style.display = "inline"
-    // set clique ability rank trackers to zero
-    cliqueTalentRanks.value = 0
-    cliqueSkillRanks.value = 0
-    cliqueKnowledgeRanks.value = 0
     // generate social-only attribute bonus drop-down menu
     let prepSocialAttributeChoices = ['', 'Persuasion', 'Manipulation', 'Ingratiation', 'Charisma']
     let prepSocialAttributeOption = document.createElement("select")
@@ -1698,10 +1729,6 @@ function theaterKidModifiers() {
     // display theaterKidAttributePicks
     theaterKidAttributePicks.style.display = "block"
     theaterKidAbilities.style.display = "inline"
-    // set clique ability rank trackers to zero
-    cliqueTalentRanks.value = 0
-    cliqueSkillRanks.value = 0
-    cliqueKnowledgeRanks.value = 0
     // generate attribute bonus drop-down menus
     let theaterKidAttributeChoices = ['', 'Persuasion', 'Manipulation', 'Ingratiation', 'Charisma']
     let theaterKidBonusAttributeOption01 = document.createElement("select")
@@ -1863,10 +1890,6 @@ function lonerModifiers() {
     // display lonerAttributePicks
     lonerAttributePicks.style.display = "block"
     lonerAbilities.style.display = "inline"
-    // set clique ability rank trackers to zero
-    cliqueTalentRanks.value = 0
-    cliqueSkillRanks.value = 0
-    cliqueKnowledgeRanks.value = 0
     // generate attribute bonus drop-down menus
     let lonerAttributeChoices = ['', 'Strength', 'Dexterity', 'Constitution', 'Resilience', 'Persuasion', 'Manipulation', 'Ingratiation', 'Charisma', 'Perception', 'Insight', 'Reason', 'Intuition']
     let lonerBonusAttributeOption01 = document.createElement("select")
@@ -2174,10 +2197,6 @@ function chameleonModifiers() {
     // display chameleonAttributePicks
     chameleonAttributePicks.style.display = "block"
     chameleonAbilities.style.display = "inline"
-    // set clique ability rank trackers to zero
-    cliqueTalentRanks.value = 0
-    cliqueSkillRanks.value = 0
-    cliqueKnowledgeRanks.value = 0
     // generate attribute bonus drop-down menus
     let chameleonAttributeChoices = ['', 'Strength', 'Dexterity', 'Constitution', 'Resilience', 'Persuasion', 'Manipulation', 'Ingratiation', 'Charisma', 'Perception', 'Insight', 'Reason', 'Intuition']
     let chameleonBonusAttributeOption01 = document.createElement("select")
@@ -2453,12 +2472,12 @@ let medicine = document.getElementById("medicine")
 let medicineModifier = document.getElementById("medicineModifier")
 let nature = document.getElementById("nature")
 let natureModifier = document.getElementById("natureModifier")
+let religion = document.getElementById("religion")
+let religionModifier = document.getElementById("religionModifier")
 let science = document.getElementById("science")
 let scienceModifier = document.getElementById("scienceModifier")
 let special = document.getElementById("special")
 let specialModifier = document.getElementById("specialModifier")
-let theology = document.getElementById("theology")
-let theologyModifier = document.getElementById("theologyModifier")
 
 let talentStringArray = ['Acting', 'Alertness', 'Athletics', 'Brawling', 'Calming Down', 'Empathy', 'Intimidation', 'Memory', 'Stealth']
 let talentArray = [acting, alertness, athletics, brawling, calmingDown, empathy, intimidation, memory, stealth]
@@ -2466,9 +2485,9 @@ let talentModifierArray = [actingModifier, alertnessModifier, athleticsModifier,
 let skillStringArray = ['Firearms', 'Investigation', 'Leadership', 'Lock-Picking', 'Lying', 'Melee', 'Music', 'Security', 'Socializing']
 let skillArray = [firearms, investigation, leadership, lockPicking, lying, melee, music, security, socializing]
 let skillModifierArray = [firearmsModifier, investigationModifier, leadershipModifier, lockPickingModifier, lyingModifier, meleeModifier, musicModifier, securityModifier, socializingModifier]
-let knowledgeStringArray = ['Arcana', 'Code-Breaking', 'Computers', 'History', 'Medicine', 'Nature', 'Science', 'Special', 'Theology']
-let knowledgeArray = [arcana, codeBreaking, computers, history, medicine, nature, science, special, theology]
-let knowledgeModifierArray = [arcanaModifier, codeBreakingModifier, computersModifier, historyModifier, medicineModifier, natureModifier, scienceModifier, specialModifier, theologyModifier]
+let knowledgeStringArray = ['Arcana', 'Code-Breaking', 'Computers', 'History', 'Medicine', 'Nature', 'Religion', 'Science', 'Special']
+let knowledgeArray = [arcana, codeBreaking, computers, history, medicine, nature, religion, science, special]
+let knowledgeModifierArray = [arcanaModifier, codeBreakingModifier, computersModifier, historyModifier, medicineModifier, natureModifier, religionModifier, scienceModifier, specialModifier]
 
 function talentChange() {
     for (i=0; i<9; i++) {
@@ -2763,6 +2782,122 @@ function prioritizeKnowledgesThird() {
     assignAbilityPoints()
 }
 
+// nerd variables
+let nerds = document.getElementById("nerds")
+let nerdTalentInput = document.getElementById("nerdTalentInput")
+let nerdSkillInput = document.getElementById("nerdSkillInput")
+let nerdFreebieTalentRadio = document.getElementById("nerdFreebieTalentRadio")
+let nerdFreebieSkillRadio = document.getElementById("nerdFreebieSkillRadio")
+let nerdFreebieKnowledgeRadio = document.getElementById("nerdFreebieKnowledgeRadio")
+let nerdTalentsArray = document.getElementsByClassName("nerdTalent")
+let nerdSkillsArray = document.getElementsByClassName("nerdSkill")
+let nerdKnowledgesArray01 = document.getElementsByClassName("nerdKnowledge01")
+let nerdKnowledgesArray02 = document.getElementsByClassName("nerdKnowledge02")
+let nerdKnowledgesArray03 = document.getElementsByClassName("nerdKnowledge03")
+let nerdKnowledgesArrays = [nerdKnowledgesArray01, nerdKnowledgesArray02, nerdKnowledgesArray03]
+let nerdFreebieTalents = document.getElementsByClassName("nerdFreebieTalent")
+let nerdFreebieSkills = document.getElementsByClassName("nerdFreebieSkill")
+let nerdFreebieKnowledges = document.getElementsByClassName("nerdFreebieKnowledge")
+
+// jock variables
+let jocks = document.getElementById("jocks")
+let jockTalentDiv = document.getElementById("jockTalentDiv")
+let jockSkillDiv = document.getElementById("jockSkillDiv")
+let jockTalentBlank = document.getElementById("jockTalentBlank")
+let jockSkillBlank = document.getElementById("jockSkillBlank")
+let jockFreebieTalentDiv = document.getElementById("jockFreebieTalentDiv")
+let jockFreebieSkillDiv = document.getElementById("jockFreebieSkillDiv")
+let jockFreebieKnowledgeDiv = document.getElementById("jockFreebieKnowledgeDiv")
+let jockFreebieTalentBlank = document.getElementById("jockFreebieTalentBlank")
+let jockFreebieSkillBlank = document.getElementById("jockFreebieSkillBlank")
+let jockFreebieKnowledgeBlank = document.getElementById("jockFreebieKnowledgeBlank")
+let jockSkillsArray01 = document.getElementsByClassName("jockSkill01")
+let jockSkillsArray02 = document.getElementsByClassName("jockSkill02")
+let jockFreebieTalentRadio = document.getElementById("jockFreebieTalentRadio")
+let jockFreebieSkillRadio = document.getElementById("jockFreebieSkillRadio")
+let jockFreebieKnowledgeRadio = document.getElementById("jockFreebieKnowledgeRadio")
+let jockTalentsArray = document.getElementsByClassName("jockTalent")
+let jockFreebieTalents = document.getElementsByClassName("jockFreebieTalent")
+let jockFreebieSkills = document.getElementsByClassName("jockFreebieSkill")
+let jockFreebieKnowledges = document.getElementsByClassName("jockFreebieKnowledge")
+
+// prep variables
+let preps = document.getElementById("preps")
+let prepFreebieTalentDiv = document.getElementById("prepFreebieTalentDiv")
+let prepFreebieSkillDiv = document.getElementById("prepFreebieSkillDiv")
+let prepFreebieKnowledgeDiv = document.getElementById("prepFreebieKnowledgeDiv")
+let prepFreebieTalentBlank = document.getElementById("prepFreebieTalentBlank")
+let prepFreebieSkillBlank = document.getElementById("prepFreebieSkillBlank")
+let prepFreebieKnowledgeBlank = document.getElementById("prepFreebieKnowledgeBlank")
+let prepFreebieTalentRadio = document.getElementById("prepFreebieTalentRadio")
+let prepFreebieSkillRadio = document.getElementById("prepFreebieSkillRadio")
+let prepFreebieKnowledgeRadio = document.getElementById("prepFreebieKnowledgeRadio")
+let prepKnowledgesArray = document.getElementsByClassName("prepKnowledge")
+let prepFreebie01Talents = document.getElementsByClassName("prepFreebie01Talent")
+let prepFreebie02Talents = document.getElementsByClassName("prepFreebie02Talent")
+let prepFreebie01Skills = document.getElementsByClassName("prepFreebie01Skill")
+let prepFreebie02Skills = document.getElementsByClassName("prepFreebie02Skill")
+let prepFreebie01Knowledges = document.getElementsByClassName("prepFreebie01Knowledge")
+let prepFreebie02Knowledges = document.getElementsByClassName("prepFreebie02Knowledge")
+
+// theaterKid variables
+let theaterKids = document.getElementById("theaterKids")
+let theaterKidKnowledgesArray = document.getElementsByClassName("theaterKidKnowledge")
+let theaterKidFreebie01Talent = document.getElementById("theaterKidFreebie01Talent")
+let theaterKidFreebie02Talent = document.getElementById("theaterKidFreebie02Talent")
+let theaterKidFreebie03Talent = document.getElementById("theaterKidFreebie03Talent")
+let theaterKidFreebie01Talents = document.getElementsByClassName("theaterKidFreebie01Talent")
+let theaterKidFreebie02Talents = document.getElementsByClassName("theaterKidFreebie02Talent")
+let theaterKidFreebie03Talents = document.getElementsByClassName("theaterKidFreebie03Talent")
+let theaterKidFreebie01Skill = document.getElementById("theaterKidFreebie01Skill")
+let theaterKidFreebie02Skill = document.getElementById("theaterKidFreebie02Skill")
+let theaterKidFreebie03Skill = document.getElementById("theaterKidFreebie03Skill")
+let theaterKidFreebie01Skills = document.getElementsByClassName("theaterKidFreebie01Skill")
+let theaterKidFreebie02Skills = document.getElementsByClassName("theaterKidFreebie02Skill")
+let theaterKidFreebie03Skills = document.getElementsByClassName("theaterKidFreebie03Skill")
+let theaterKidFreebie01Knowledge = document.getElementById("theaterKidFreebie01Knowledge")
+let theaterKidFreebie02Knowledge = document.getElementById("theaterKidFreebie02Knowledge")
+let theaterKidFreebie03Knowledge = document.getElementById("theaterKidFreebie03Knowledge")
+let theaterKidFreebie01Knowledges = document.getElementsByClassName("theaterKidFreebie01Knowledge")
+let theaterKidFreebie02Knowledges = document.getElementsByClassName("theaterKidFreebie02Knowledge")
+let theaterKidFreebie03Knowledges = document.getElementsByClassName("theaterKidFreebie03Knowledge")
+
+// loner variables
+let loners = document.getElementById("loners")
+let lonerFreebieTalentDiv = document.getElementById("lonerFreebieTalentDiv")
+let lonerFreebieSkillDiv = document.getElementById("lonerFreebieSkillDiv")
+let lonerFreebieKnowledgeDiv = document.getElementById("lonerFreebieKnowledgeDiv")
+let lonerFreebieTalentBlank = document.getElementById("lonerFreebieTalentBlank")
+let lonerFreebieSkillBlank = document.getElementById("lonerFreebieSkillBlank")
+let lonerFreebieKnowledgeBlank = document.getElementById("lonerFreebieKnowledgeBlank")
+let lonerFreebieTalentRadio = document.getElementById("lonerFreebieTalentRadio")
+let lonerFreebieSkillRadio = document.getElementById("lonerFreebieSkillRadio")
+let lonerFreebieKnowledgeRadio = document.getElementById("lonerFreebieKnowledgeRadio")
+let lonerKnowledgesArray = document.getElementsByClassName("lonerKnowledge")
+let lonerFreebieTalents = document.getElementsByClassName("lonerFreebieTalent")
+let lonerFreebieSkills = document.getElementsByClassName("lonerFreebieSkill")
+let lonerFreebieKnowledges = document.getElementsByClassName("lonerFreebieKnowledge")
+let lonerTalentsArray = document.getElementsByClassName("lonerTalent")
+let lonerSkillsArray01 = document.getElementsByClassName("lonerSkill01")
+let lonerSkillsArray02 = document.getElementsByClassName("lonerSkill02")
+let lonerSkillsArray03 = document.getElementsByClassName("lonerSkill03")
+
+// chameleon variables
+let chameleons = document.getElementById("chameleons")
+let chameleonTalent = document.getElementById("chameleonTalent")
+let chameleonSkill = document.getElementById("chameleonSkill")
+let chameleonKnowledge = document.getElementById("chameleonKnowledge")
+let chameleonTalentsArray = document.getElementsByClassName("chameleonTalent")
+let chameleonSkillsArray = document.getElementsByClassName("chameleonSkill")
+let chameleonKnowledgesArray = document.getElementsByClassName("chameleonKnowledge")
+let chameleonFreebie01Talents = document.getElementsByClassName("chameleonFreebie01Talent")
+let chameleonFreebie02Talents = document.getElementsByClassName("chameleonFreebie02Talent")
+let chameleonFreebie01Skills = document.getElementsByClassName("chameleonFreebie01Skill")
+let chameleonFreebie02Skills = document.getElementsByClassName("chameleonFreebie02Skill")
+let chameleonFreebie01Knowledges = document.getElementsByClassName("chameleonFreebie01Knowledge")
+let chameleonFreebie02Knowledges = document.getElementsByClassName("chameleonFreebie02Knowledge")
+
+// Ability Value variables
 let talentsUntrained = document.getElementsByClassName("talentUntrained")
 let talentsProficient = document.getElementsByClassName("talentProficient")
 let talentsSkilled = document.getElementsByClassName("talentSkilled")
@@ -2806,7 +2941,6 @@ function abilityChange() {
             talentsSkilledSpend += 2
         }
     }
-    talentRanksLeft.innerHTML = talentRanksLeftValue - talentsProficientSpend - talentsSkilledSpend
     for (i=0; i<skillsUntrained.length; i++) {
         if (skillsUntrained[i].selected == true) {
             skillModifierArray[i].innerHTML = -2
@@ -2824,7 +2958,6 @@ function abilityChange() {
             skillsSkilledSpend += 2
         }
     }
-    skillRanksLeft.innerHTML = skillRanksLeftValue - skillsProficientSpend - skillsSkilledSpend
     for (i=0; i<knowledgesUntrained.length; i++) {
         if (knowledgesUntrained[i].selected == true) {
             knowledgeModifierArray[i].innerHTML = -4
@@ -2842,8 +2975,349 @@ function abilityChange() {
             knowledgesSkilledSpend += 2
         }
     }
-    knowledgeRanksLeft.innerHTML = knowledgeRanksLeftValue - knowledgesProficientSpend - knowledgesSkilledSpend
+// integrating clique counters
+    let talentCounter = 0
+    let skillCounter = 0
+    let knowledgeCounter = 0
+// save # of Talents, Skills, and Knowledges gained from Clique to clique counters
+    if (nerds.checked == true) {
+        if (nerdTalentInput.checked == true) {
+            for (i=0; i<nerdTalentsArray.length; i++) {
+                if (nerdTalentsArray[i].selected == true) {
+                    talentCounter += 1
+                }
+            }
+    
+        }
+        if (nerdSkillInput.checked == true) {
+            for (i=0; i<nerdSkillsArray.length; i++) {
+                if (nerdSkillsArray[i].selected == true) {
+                    skillCounter += 1
+                }
+            }
+    
+        } 
+        for (i=0; i<nerdKnowledgesArray01.length; i++) {
+            if (nerdKnowledgesArray01[i].selected == true) {
+                knowledgeCounter += 1
+            }
+        }
+        for (i=0; i<nerdKnowledgesArray02.length; i++) {
+            if (nerdKnowledgesArray02[i].selected == true) {
+                knowledgeCounter += 1
+            }
+        }
+        for (i=0; i<nerdKnowledgesArray03.length; i++) {
+            if (nerdKnowledgesArray03[i].selected == true) {
+                knowledgeCounter += 1
+            }
+        }
+        if (nerdFreebieTalentRadio.checked == true) {
+            for (i=0; i<nerdFreebieTalents.length; i++) {
+                if (nerdFreebieTalents[i].selected == true) {
+                    talentCounter += 1
+                }
+            }
+        }
+        if (nerdFreebieSkillRadio.checked == true) {
+            for (i=0; i<nerdFreebieSkills.length; i++) {
+                if (nerdFreebieSkills[i].selected == true) {
+                    skillCounter += 1
+                }
+            }
+        }
+        if (nerdFreebieKnowledgeRadio.checked == true) {
+            for (i=0; i<nerdFreebieKnowledges.length; i++) {
+                if (nerdFreebieKnowledges[i].selected == true) {
+                    knowledgeCounter += 1
+                }
+            }
+        }
+    } else if (jocks.checked == true) {
+        // correct for Athletics
+        talentCounter += 1
+        // correct for jock talent 2
+        for (i=0; i<jockTalentsArray.length; i++) {
+            if (jockTalentsArray[i].selected == true) {
+                talentCounter += 1
+            }
+        }
+        // correct for two jock skills
+        for (i=0; i<jockSkillsArray01.length; i++) {
+            if (jockSkillsArray01[i].selected == true) {
+                skillCounter += 1
+            }
+        }
+        for (i=0; i<jockSkillsArray02.length; i++) {
+            if (jockSkillsArray02[i].selected == true) {
+                skillCounter += 1
+            }
+        }
+        // correct for jock freebies
+        if (jockFreebieTalentRadio.checked == true) {
+            for (i=0; i<jockFreebieTalents.length; i++) {
+                if (jockFreebieTalents[i].selected == true) {
+                    talentCounter += 1
+                }
+            }
+        }
+        if (jockFreebieSkillRadio.checked == true) {
+            for (i=0; i<jockFreebieSkills.length; i++) {
+                if (jockFreebieSkills[i].selected == true) {
+                    skillCounter += 1
+                }
+            }
+        }
+        if (jockFreebieKnowledgeRadio.checked == true) {
+            for (i=0; i<jockFreebieKnowledges.length; i++) {
+                if (jockFreebieKnowledges[i].selected == true) {
+                    knowledgeCounter += 1
+                }
+            }
+        }
+    } else if (preps.checked == true) {
+        // correct for Leadership and Socializing
+        skillCounter += 2
+        // correct for prep knowledge
+        for (i=0; i<prepKnowledgesArray.length; i++) {
+            if (prepKnowledgesArray[i].selected == true) {
+                knowledgeCounter += 1
+            }
+        }
+        // correct for prep freebies
+        if (prepFreebie01Talent.checked == true) {
+            for (i=0; i<prepFreebie01Talents.length; i++) {
+                if (prepFreebie01Talents[i].selected == true) {
+                    talentCounter += 1
+                }
+            }    
+        }
+        if (prepFreebie01Skill.checked == true) {
+            for (i=0; i<prepFreebie01Skills.length; i++) {
+                if (prepFreebie01Skills[i].selected == true) {
+                    skillCounter += 1
+                }
+            }    
+        }
+        if (prepFreebie01Knowledge.checked == true) {
+            for (i=0; i<prepFreebie01Knowledges.length; i++) {
+                if (prepFreebie01Knowledges[i].selected == true) {
+                    knowledgeCounter += 1
+                }
+            }
+        }
+        if (prepFreebie02Talent.checked == true) {
+            for (i=0; i<prepFreebie02Talents.length; i++) {
+                if (prepFreebie02Talents[i].selected == true) {
+                    talentCounter += 1
+                }
+            }    
+        }
+        if (prepFreebie02Skill.checked == true) {
+            for (i=0; i<prepFreebie02Skills.length; i++) {
+                if (prepFreebie02Skills[i].selected == true) {
+                    skillCounter += 1
+                }
+            }    
+        }
+        if (prepFreebie02Knowledge.checked == true) {
+            for (i=0; i<prepFreebie02Knowledges.length; i++) {
+                if (prepFreebie02Knowledges[i].selected == true) {
+                    knowledgeCounter += 1
+                }
+            }            
+        }
+    } else if (theaterKids.checked == true) {
+        // correct for either Acting or Music
+        let theaterKidActing = document.getElementById("theaterKidActing")
+        let theaterKidMusic = document.getElementById("theaterKidMusic")
+        if (theaterKidActing.selected == true) {
+            talentCounter += 1
+        } 
+        else if (theaterKidMusic.selected == true) {
+            skillCounter += 1
+        }
+        // correct for theater kid knowledge
+        for (i=0; i<theaterKidKnowledgesArray.length; i++) {
+            if (theaterKidKnowledgesArray[i].selected == true) {
+                knowledgeCounter += 1
+            }
+        }
+        // correct for freebies
+        if (theaterKidFreebie01Talent.checked == true) {
+            for (i=0; i<theaterKidFreebie01Talents.length; i++) {
+                if (theaterKidFreebie01Talents[i].selected == true) {
+                    talentCounter += 1
+                }
+            }    
+        }
+        else if (theaterKidFreebie01Skill.checked == true) {
+            for (i=0; i<theaterKidFreebie01Skills.length; i++) {
+                if (theaterKidFreebie01Skills[i].selected == true) {
+                    skillCounter += 1
+                }
+            }
+        } 
+        else if (theaterKidFreebie01Knowledge.checked == true) {
+            for (i=0; i<theaterKidFreebie01Knowledges.length; i++) {
+                if (theaterKidFreebie03Knowledges[i].selected == true) {
+                    knowledgeCounter += 1
+                }
+            }    
+        }
+        if (theaterKidFreebie02Talent.checked == true) {
+            for (i=0; i<theaterKidFreebie02Talents.length; i++) {
+                if (theaterKidFreebie02Talents[i].selected == true) {
+                    talentCounter += 1
+                }
+            }    
+        } 
+        else if (theaterKidFreebie02Skill.checked == true) {
+            for (i=0; i<theaterKidFreebie02Skills.length; i++) {
+                if (theaterKidFreebie02Skills[i].selected == true) {
+                    skillCounter += 1
+                }
+            }
+        }
+        else if (theaterKidFreebie02Knowledge.checked == true) {
+            for (i=0; i<theaterKidFreebie02Knowledges.length; i++) {
+                if (theaterKidFreebie02Knowledges[i].selected == true) {
+                    knowledgeCounter += 1
+                }
+            }
+        }
+        if (theaterKidFreebie03Talent.checked == true) {
+            for (i=0; i<theaterKidFreebie03Talents.length; i++) {
+                if (theaterKidFreebie03Talents[i].selected == true) {
+                    talentCounter += 1
+                }
+            }    
+        }
+        else if (theaterKidFreebie03Skill.checked == true) {
+            for (i=0; i<theaterKidFreebie03Skills.length; i++) {
+                if (theaterKidFreebie03Skills[i].selected == true) {
+                    skillCounter += 1
+                }
+            }
+        }
+        else if (theaterKidFreebie03Knowledge.checked == true) {
+            for (i=0; i<theaterKidFreebie03Knowledges.length; i++) {
+                if (theaterKidFreebie03Knowledges[i].selected == true) {
+                    knowledgeCounter += 1
+                }
+            }
+        }
+    } else if (loners.checked == true) {
+        // correct for talent
+        for (i=0; i<lonerTalentsArray.length; i++) {
+            if (lonerTalentsArray[i].selected == true) {
+                talentCounter += 1
+            }    
+        }
+        //correct for 3 skills
+        for (i=0; i<lonerSkillsArray01.length; i++) {
+            if (lonerSkillsArray01[i].selected == true) {
+                skillCounter += 1
+            }
+        }
+        for (i=0; i<lonerSkillsArray02.length; i++) {
+            if (lonerSkillsArray02[i].selected == true) {
+                skillCounter += 1
+            }
+        }
+        for (i=0; i<lonerSkillsArray03.length; i++) {
+            if (lonerSkillsArray03[i].selected == true) {
+                skillCounter += 1
+            }
+        }
+        // correct for freebie
+        if (lonerFreebieTalentRadio.checked == true) {
+            for (i=0; i<lonerFreebieTalents.length; i++) {
+                if (lonerFreebieTalents[i].selected == true) {
+                    talentCounter += 1
+                }
+            }
+        }
+        else if (lonerFreebieSkillRadio.checked == true) {
+            for (i=0; i<lonerFreebieSkills.length; i++) {
+                if (lonerFreebieSkills[i].selected == true) {
+                    skillCounter += 1
+                }
+            }
+        }
+        else if (lonerFreebieKnowledgeRadio.checked == true) {
+            for (i=0; i<lonerFreebieKnowledges.length; i++) {
+                if (lonerFreebieKnowledges[i].selected == true) {
+                    knowledgeCounter += 1
+                }
+            }
+        }
+    } else if (chameleons.checked == true) {
+        // correct for talent, skill, and knowledge
+        for (i=0; i<chameleonTalentsArray.length; i++) {
+            if (chameleonTalentsArray[i].selected == true) {
+                talentCounter += 1
+            }
+        }
+        for (i=0; i<chameleonSkillsArray.length; i++) {
+            if (chameleonSkillsArray[i].selected == true) {
+                skillCounter += 1
+            }
+        }
+        for (i=0; i<chameleonKnowledgesArray.length; i++) {
+            if (chameleonKnowledgesArray[i].selected == true) {
+                knowledgeCounter += 1
+            }
+        }
+        // correct for freebies
+        if (chameleonFreebie01Talent.checked == true) {
+            for (i=0; i<chameleonFreebie01Talents.length; i++) {
+                if (chameleonFreebie01Talents[i].selected == true) {
+                    talentCounter += 1
+                }
+            }
+        }
+        else if (chameleonFreebie01Skill.checked == true) {
+            for (i=0; i<chameleonFreebie01Skills.length; i++) {
+                if (chameleonFreebie01Skills[i].selected == true) {
+                    skillCounter += 1
+                }
+            }
+        }
+        else if (chameleonFreebie01Knowledge.checked == true) {
+            for (i=0; i<chameleonFreebie01Knowledges.length; i++) {
+                if (chameleonFreebie01Knowledges[i].selected == true) {
+                    knowledgeCounter += 1
+                }
+            }
+        }
+        if (chameleonFreebie02Talent.checked == true) {
+            for (i=0; i<chameleonFreebie02Talents.length; i++) {
+                if (chameleonFreebie02Talents[i].selected == true) {
+                    talentCounter += 1
+                }
+            }
+        }
+        else if (chameleonFreebie02Skill.checked == true) {
+            for (i=0; i<chameleonFreebie02Skills.length; i++) {
+                if (chameleonFreebie02Skills[i].selected == true) {
+                    skillCounter += 1
+                }
+            }
+        }
+        else if (chameleonFreebie02Knowledge.checked == true) {
+            for (i=0; i<chameleonFreebie02Knowledges.length; i++) {
+                if (chameleonFreebie02Knowledges[i].selected == true) {
+                    knowledgeCounter += 1
+                }
+            }
+        }
+    }
+    talentRanksLeft.innerHTML = talentRanksLeftValue - talentsProficientSpend - talentsSkilledSpend + talentCounter
+    skillRanksLeft.innerHTML = skillRanksLeftValue - skillsProficientSpend - skillsSkilledSpend + skillCounter
+    knowledgeRanksLeft.innerHTML = knowledgeRanksLeftValue - knowledgesProficientSpend - knowledgesSkilledSpend + knowledgeCounter
 }
+
 
 let talentUntrained = document.getElementsByClassName("talentUntrained")
 let talentProficient = document.getElementsByClassName("talentProficient")
@@ -2854,19 +3328,69 @@ let skillSkilled = document.getElementsByClassName("skillSkilled")
 let knowledgeUntrained = document.getElementsByClassName("knowledgeUntrained")
 let knowledgeProficient = document.getElementsByClassName("knowledgeProficient")
 let knowledgeSkilled = document.getElementsByClassName("knowledgeSkilled")
-let nerdTalentInput = document.getElementById("nerdTalentInput")
-let nerdSkillInput = document.getElementById("nerdSkillInput")
-let nerdFreebieTalentRadio = document.getElementById("nerdFreebieTalentRadio")
-let nerdFreebieSkillRadio = document.getElementById("nerdFreebieSkillRadio")
-let nerdFreebieKnowledgeRadio = document.getElementById("nerdFreebieKnowledgeRadio")
-let nerdTalentsArray = document.getElementsByClassName("nerdTalent")
-let nerdSkillsArray = document.getElementsByClassName("nerdSkill")
-let nerdKnowledgesArray01 = document.getElementsByClassName("nerdKnowledge01")
-let nerdKnowledgesArray02 = document.getElementsByClassName("nerdKnowledge02")
-let nerdKnowledgesArray03 = document.getElementsByClassName("nerdKnowledge03")
-let nerdFreebieTalents = document.getElementsByClassName("nerdFreebieTalent")
-let nerdFreebieSkills = document.getElementsByClassName("nerdFreebieSkill")
-let nerdFreebieKnowledges = document.getElementsByClassName("nerdFreebieKnowledge")
+
+let talent = document.getElementsByClassName("talent")
+let skill = document.getElementsByClassName("skill")
+let knowledge = document.getElementsByClassName("knowledge")
+
+
+function removeAbilityOptions() {
+    for (i=0; i<talentSkilled.length; i++) {
+        if (talentSkilled[i].selected == true) {
+            talentUntrained[i].style.display = "none"
+            talentProficient[i].style.display = "none"
+        }
+        if (talentProficient[i].selected == true) {
+            talentUntrained[i].style.display = "none"
+        }
+    }
+    for (i=0; i<skillSkilled.length; i++) {
+        if (skillSkilled[i].selected == true) {
+            skillUntrained[i].style.display = "none"
+            skillProficient[i].style.display = "none"
+        }
+        if (skillProficient[i].selected == true) {
+            skillUntrained[i].style.display = "none"
+        }
+    }
+    for (i=0; i<knowledgeSkilled.length; i++) {
+        if (knowledgeSkilled[i].selected == true) {
+            knowledgeUntrained[i].style.display = "none"
+            knowledgeProficient[i].style.display = "none"
+        }
+        if (knowledgeProficient[i].selected == true) {
+            knowledgeUntrained[i].style.display = "none"
+        }
+    }
+}
+
+function reAddAbilityOptions() {
+    for (i=0; i<talentUntrained.length; i++) {
+        if (talentUntrained[i].style.display == "none") {
+            talentUntrained[i].style.display = "block"
+        }
+        if (talentProficient[i].style.display == "none") {
+            talentProficient[i].style.display = "block"
+        }
+    }
+    for (i=0; i<skillUntrained.length; i++) {
+        if (skillUntrained[i].style.display == "none") {
+            skillUntrained[i].style.display = "block"
+        }
+        if (skillProficient[i].style.display == "none") {
+            skillProficient[i].style.display = "block"
+        }
+    }
+    for (i=0; i<knowledgeUntrained.length; i++) {
+        if (knowledgeUntrained[i].style.display == "none") {
+            knowledgeUntrained[i].style.display = "block"
+        }
+        if (knowledgeProficient[i].style.display == "none") {
+            knowledgeProficient[i].style.display = "block"
+        }
+    }
+}
+
 
 let nerdTalentDiv = document.getElementById("nerdTalentDiv")
 let nerdSkillDiv = document.getElementById("nerdSkillDiv")
@@ -2878,6 +3402,7 @@ let nerdFreebieKnowledgeDiv = document.getElementById("nerdFreebieKnowledgeDiv")
 let nerdFreebieTalentBlank = document.getElementById("nerdFreebieTalentBlank")
 let nerdFreebieSkillBlank = document.getElementById("nerdFreebieSkillBlank")
 let nerdFreebieKnowledgeBlank = document.getElementById("nerdFreebieKnowledgeBlank")
+let nerdAbilitiesApplied = document.getElementById("nerdAbilitiesApplied")
 
 function presentNerdTalent() {
     nerdTalentDiv.style.display = "inline"
@@ -2915,7 +3440,35 @@ function presentNerdFreebieKnowledge() {
     nerdFreebieSkillBlank.selected = true
 }
 
+function resetAbilitiesToUntrained() {
+    for (i=0; i<talentsUntrained.length; i++) {
+        if (talentsSkilled[i].selected == true) {
+            talentsProficient[i].selected= true
+        }
+        if (talentsProficient[i].selected == true) {
+            talentsUntrained[i].selected = true
+        }
+    }
+    for (i=0; i<skillsUntrained.length; i++) {
+        if (skillsSkilled[i].selected == true) {
+            skillsProficient[i].selected = true
+        }
+        if (skillsProficient[i].selected == true) {
+            skillsUntrained[i].selected = true
+        }
+    }
+    for (i=0; i<knowledgesUntrained.length; i++) {
+        if (knowledgesSkilled[i].selected == true) {
+            knowledgesProficient[i].selected = true
+        }
+        if (knowledgesProficient[i].selected == true) {
+            knowledgesUntrained[i].selected= true
+        }
+    }
+}
+
 function applyNerdAbilities() {
+    resetAbilitiesToUntrained()
     if (nerdTalentInput.checked == true) { 
         for (i=0; i<nerdTalentsArray.length; i++) {
             if (nerdTalentsArray[i].selected == true) {
@@ -2993,7 +3546,9 @@ function applyNerdAbilities() {
     talentChange()
     skillChange()
     knowledgeChange()
-    }
+    abilityChange()
+    removeAbilityOptions()
+}
 
 function resetNerdAbilities() {
     for (i=0; i<talentsUntrained.length; i++) {
@@ -3035,28 +3590,9 @@ function resetNerdAbilities() {
     talentChange()
     skillChange()
     knowledgeChange()
+    abilityChange()
+    reAddAbilityOptions()
 }    
-
-let jockTalentDiv = document.getElementById("jockTalentDiv")
-let jockSkillDiv = document.getElementById("jockSkillDiv")
-let jockTalentBlank = document.getElementById("jockTalentBlank")
-let jockSkillBlank = document.getElementById("jockSkillBlank")
-let jockFreebieTalentDiv = document.getElementById("jockFreebieTalentDiv")
-let jockFreebieSkillDiv = document.getElementById("jockFreebieSkillDiv")
-let jockFreebieKnowledgeDiv = document.getElementById("jockFreebieKnowledgeDiv")
-let jockFreebieTalentBlank = document.getElementById("jockFreebieTalentBlank")
-let jockFreebieSkillBlank = document.getElementById("jockFreebieSkillBlank")
-let jockFreebieKnowledgeBlank = document.getElementById("jockFreebieKnowledgeBlank")
-let jockSkillsArray01 = document.getElementsByClassName("jockSkill01")
-let jockSkillsArray02 = document.getElementsByClassName("jockSkill02")
-let jockFreebieTalentRadio = document.getElementById("jockFreebieTalentRadio")
-let jockFreebieSkillRadio = document.getElementById("jockFreebieSkillRadio")
-let jockFreebieKnowledgeRadio = document.getElementById("jockFreebieKnowledgeRadio")
-let jockTalentsArray = document.getElementsByClassName("jockTalent")
-let jockFreebieTalents = document.getElementsByClassName("jockFreebieTalent")
-let jockFreebieSkills = document.getElementsByClassName("jockFreebieSkill")
-let jockFreebieKnowledges = document.getElementsByClassName("jockFreebieKnowledge")
-
 
 function presentJockFreebieTalent() {
     jockFreebieTalentDiv.style.display = "inline"
@@ -3083,6 +3619,7 @@ function presentJockFreebieKnowledge() {
 }
 
 function applyJockAbilities() {
+    resetAbilitiesToUntrained()
     let athleticsProficient = document.getElementById("athletics01")
     athleticsProficient.selected = true
     for (i=0; i<jockTalentsArray.length; i++) {
@@ -3142,6 +3679,8 @@ function applyJockAbilities() {
     talentChange()
     skillChange()
     knowledgeChange()
+    abilityChange()
+    removeAbilityOptions()
 }
 
 function resetJockAbilities() {
@@ -3183,21 +3722,9 @@ function resetJockAbilities() {
     talentChange()
     skillChange()
     knowledgeChange()
+    abilityChange()
+    reAddAbilityOptions()
 }    
-
-let prepFreebieTalentDiv = document.getElementById("prepFreebieTalentDiv")
-let prepFreebieSkillDiv = document.getElementById("prepFreebieSkillDiv")
-let prepFreebieKnowledgeDiv = document.getElementById("prepFreebieKnowledgeDiv")
-let prepFreebieTalentBlank = document.getElementById("prepFreebieTalentBlank")
-let prepFreebieSkillBlank = document.getElementById("prepFreebieSkillBlank")
-let prepFreebieKnowledgeBlank = document.getElementById("prepFreebieKnowledgeBlank")
-let prepFreebieTalentRadio = document.getElementById("prepFreebieTalentRadio")
-let prepFreebieSkillRadio = document.getElementById("prepFreebieSkillRadio")
-let prepFreebieKnowledgeRadio = document.getElementById("prepFreebieKnowledgeRadio")
-let prepKnowledgesArray = document.getElementsByClassName("prepKnowledge")
-let prepFreebieTalents = document.getElementsByClassName("prepFreebieTalent")
-let prepFreebieSkills = document.getElementsByClassName("prepFreebieSkill")
-let prepFreebieKnowledges = document.getElementsByClassName("prepFreebieKnowledge")
 
 function presentPrepFreebieTalent() {
     prepFreebieTalentDiv.style.display = "inline"
@@ -3223,14 +3750,8 @@ function presentPrepFreebieKnowledge() {
     prepFreebieSkillBlank.selected = true
 }
 
-let prepFreebie01Talents = document.getElementsByClassName("prepFreebie01Talent")
-let prepFreebie02Talents = document.getElementsByClassName("prepFreebie02Talent")
-let prepFreebie01Skills = document.getElementsByClassName("prepFreebie01Skill")
-let prepFreebie02Skills = document.getElementsByClassName("prepFreebie02Skill")
-let prepFreebie01Knowledges = document.getElementsByClassName("prepFreebie01Knowledge")
-let prepFreebie02Knowledges = document.getElementsByClassName("prepFreebie02Knowledge")
-
 function applyPrepAbilities() {
+    resetAbilitiesToUntrained()
     let leadershipProficient = document.getElementById("leadership01")
     leadershipProficient.selected = true
     let socializingProficient = document.getElementById("socializing01")
@@ -3244,104 +3765,77 @@ function applyPrepAbilities() {
             }
         }
     }    
-/*
-    for (i=0; i<9; i++) {
-        if (prepFreebieTalentRadio.checked == true) {
-            if (prepFreebieTalents[i].selected == true) {
+    if (prepFreebie01Talents.checked == true) {
+        for (i=0; i<prepFreebie01Talents.length; i++) {
+            if (prepFreebie01Talents[i].selected == true) {
                 if (talentUntrained[i].selected == true) {
                     talentProficient[i].selected = true
                 } else if (talentProficient[i].selected == true) {
                     talentSkilled[i].selected = true
                 }
-            }    
-        } else if (prepFreebieSkillRadio.checked == true) {
-            if (prepFreebieSkills[i].selected == true) {
+            }
+        }
+    }
+    if (prepFreebie02Talent.checked == true) {
+        for (i=0; i<prepFreebie02Talents.length; i++) {
+            if (prepFreebie02Talents[i].selected == true) {
+                if (talentUntrained[i].selected == true) {
+                talentProficient[i].selected = true
+                } else if (talentProficient[i].selected == true) {
+                talentSkilled[i].selected = true
+                }
+            }
+        }
+    }
+    if (prepFreebie01Skill.checked == true) {
+        for (i=0; i<prepFreebie01Skills.length; i++) {
+            if (prepFreebie01Skills[i].selected == true) {
                 if (skillUntrained[i].selected == true) {
                     skillProficient[i].selected = true
                 } else if (skillProficient[i].selected == true) {
                     skillSkilled[i].selected = true
                 }
-            }    
-        } else if (prepFreebieKnowledgeRadio.checked == true) {
-            if (prepFreebieKnowledges[i].selected == true) {
+            }
+        }
+    }
+    if (prepFreebie02Skill.checked == true) {
+        for (i=0; i<prepFreebie02Skills.length; i++) {
+            if (prepFreebie02Skills[i].selected == true) {
+                if (skillUntrained[i].selected == true) {
+                    skillProficient[i].selected = true
+                } else if (skillProficient[i].selected == true) {
+                    skillSkilled[i].selected = true
+                }
+            }
+        }
+    }
+    if (prepFreebie01Knowledge.checked == true) {
+        for (i=0; i<prepFreebie01Knowledges.length; i++) {
+            if (prepFreebie01Knowledges[i].selected == true) {
                 if (knowledgeUntrained[i].selected == true) {
                     knowledgeProficient[i].selected = true
                 } else if (knowledgeProficient[i].selected == true) {
                     knowledgeSkilled[i].selected = true
                 }
-            }    
-        }
-    }
-*/
-if (prepFreebie01Talent.checked == true) {
-    for (i=0; i<prepFreebie01Talents.length; i++) {
-        if (prepFreebie01Talents[i].selected == true) {
-            if (talentUntrained[i].selected == true) {
-                talentProficient[i].selected = true
-            } else if (talentProficient[i].selected == true) {
-                talentSkilled[i].selected = true
             }
         }
     }
-}
-if (prepFreebie02Talent.checked == true) {
-    for (i=0; i<prepFreebie02Talents.length; i++) {
-        if (prepFreebie02Talents[i].selected == true) {
-            if (talentUntrained[i].selected == true) {
-            talentProficient[i].selected = true
-            } else if (talentProficient[i].selected == true) {
-            talentSkilled[i].selected = true
+    if (prepFreebie02Knowledge.checked == true) {
+        for (i=0; i<prepFreebie02Knowledges.length; i++) {
+            if (prepFreebie02Knowledges[i].selected == true) {
+                if (knowledgeUntrained[i].selected == true) {
+                    knowledgeProficient[i].selected = true
+                } else if (knowledgeProficient[i].selected == true) {
+                    knowledgeSkilled[i].selected = true
+                }
             }
         }
     }
-}
-if (prepFreebie01Skill.checked == true) {
-    for (i=0; i<prepFreebie01Skills.length; i++) {
-        if (prepFreebie01Skills[i].selected == true) {
-            if (skillUntrained[i].selected == true) {
-                skillProficient[i].selected = true
-            } else if (skillProficient[i].selected == true) {
-                skillSkilled[i].selected = true
-            }
-        }
-    }
-}
-if (prepFreebie02Skill.checked == true) {
-    for (i=0; i<prepFreebie02Skills.length; i++) {
-        if (prepFreebie02Skills[i].selected == true) {
-            if (skillUntrained[i].selected == true) {
-                skillProficient[i].selected = true
-            } else if (skillProficient[i].selected == true) {
-                skillSkilled[i].selected = true
-            }
-        }
-    }
-}
-if (prepFreebie01Knowledge.checked == true) {
-    for (i=0; i<prepFreebie01Knowledges.length; i++) {
-        if (prepFreebie01Knowledges[i].selected == true) {
-            if (knowledgeUntrained[i].selected == true) {
-                knowledgeProficient[i].selected = true
-            } else if (knowledgeProficient[i].selected == true) {
-                knowledgeSkilled[i].selected = true
-            }
-        }
-    }
-}
-if (prepFreebie02Knowledge.checked == true) {
-    for (i=0; i<prepFreebie02Knowledges.length; i++) {
-        if (prepFreebie02Knowledges[i].selected == true) {
-            if (knowledgeUntrained[i].selected == true) {
-                knowledgeProficient[i].selected = true
-            } else if (knowledgeProficient[i].selected == true) {
-                knowledgeSkilled[i].selected = true
-            }
-        }
-    }
-}
     talentChange()
     skillChange()
     knowledgeChange()
+    abilityChange()
+    removeAbilityOptions()
 }
 
 function resetPrepAbilities() {
@@ -3380,32 +3874,16 @@ function resetPrepAbilities() {
     talentChange()
     skillChange()
     knowledgeChange()
+    abilityChange()
+    reAddAbilityOptions()
 }
 
 let music00 = document.getElementById("music00")
 let music01 = document.getElementById("music01")
 let music02 = document.getElementById("music02")
-let theaterKidKnowledgesArray = document.getElementsByClassName("theaterKidKnowledge")
-let theaterKidFreebie01Talent = document.getElementById("theaterKidFreebie01Talent")
-let theaterKidFreebie02Talent = document.getElementById("theaterKidFreebie02Talent")
-let theaterKidFreebie03Talent = document.getElementById("theaterKidFreebie03Talent")
-let theaterKidFreebie01Talents = document.getElementsByClassName("theaterKidFreebie01Talent")
-let theaterKidFreebie02Talents = document.getElementsByClassName("theaterKidFreebie02Talent")
-let theaterKidFreebie03Talents = document.getElementsByClassName("theaterKidFreebie03Talent")
-let theaterKidFreebie01Skill = document.getElementById("theaterKidFreebie01Skill")
-let theaterKidFreebie02Skill = document.getElementById("theaterKidFreebie02Skill")
-let theaterKidFreebie03Skill = document.getElementById("theaterKidFreebie03Skill")
-let theaterKidFreebie01Skills = document.getElementsByClassName("theaterKidFreebie01Skill")
-let theaterKidFreebie02Skills = document.getElementsByClassName("theaterKidFreebie02Skill")
-let theaterKidFreebie03Skills = document.getElementsByClassName("theaterKidFreebie03Skill")
-let theaterKidFreebie01Knowledge = document.getElementById("theaterKidFreebie01Knowledge")
-let theaterKidFreebie02Knowledge = document.getElementById("theaterKidFreebie02Knowledge")
-let theaterKidFreebie03Knowledge = document.getElementById("theaterKidFreebie03Knowledge")
-let theaterKidFreebie01Knowledges = document.getElementsByClassName("theaterKidFreebie01Knowledge")
-let theaterKidFreebie02Knowledges = document.getElementsByClassName("theaterKidFreebie02Knowledge")
-let theaterKidFreebie03Knowledges = document.getElementsByClassName("theaterKidFreebie03Knowledge")
 
 function applyTheaterKidAbilities() {
+    resetAbilitiesToUntrained()
     let theaterKidActing = document.getElementById("theaterKidActing")
     let theaterKidMusic = document.getElementById("theaterKidMusic")
     if (theaterKidActing.selected == true) {
@@ -3532,6 +4010,8 @@ function applyTheaterKidAbilities() {
     talentChange()
     skillChange()
     knowledgeChange()
+    abilityChange()
+    removeAbilityOptions()
 }
 
 function resetTheaterKidAbilities() {
@@ -3577,30 +4057,9 @@ function resetTheaterKidAbilities() {
     talentChange()
     skillChange()
     knowledgeChange()
+    abilityChange()
+    reAddAbilityOptions()
 }
-
-let lonerFreebieTalentDiv = document.getElementById("lonerFreebieTalentDiv")
-let lonerFreebieSkillDiv = document.getElementById("lonerFreebieSkillDiv")
-let lonerFreebieKnowledgeDiv = document.getElementById("lonerFreebieKnowledgeDiv")
-let lonerFreebieTalentBlank = document.getElementById("lonerFreebieTalentBlank")
-let lonerFreebieSkillBlank = document.getElementById("lonerFreebieSkillBlank")
-let lonerFreebieKnowledgeBlank = document.getElementById("lonerFreebieKnowledgeBlank")
-let lonerFreebieTalentRadio = document.getElementById("lonerFreebieTalentRadio")
-let lonerFreebieSkillRadio = document.getElementById("lonerFreebieSkillRadio")
-let lonerFreebieKnowledgeRadio = document.getElementById("lonerFreebieKnowledgeRadio")
-let lonerKnowledgesArray = document.getElementsByClassName("lonerKnowledge")
-let lonerFreebieTalents = document.getElementsByClassName("lonerFreebieTalent")
-let lonerFreebieSkills = document.getElementsByClassName("lonerFreebieSkill")
-let lonerFreebieKnowledges = document.getElementsByClassName("lonerFreebieKnowledge")
-
-
-let lonerTalentsArray = document.getElementsByClassName("lonerTalent")
-let lonerSkillsArray01 = document.getElementsByClassName("lonerSkill01")
-let lonerSkillsArray02 = document.getElementsByClassName("lonerSkill02")
-let lonerSkillsArray03 = document.getElementsByClassName("lonerSkill03")
-
-
-
 
 function presentLonerFreebieTalent() {
     lonerFreebieTalentDiv.style.display = "inline"
@@ -3627,6 +4086,7 @@ function presentLonerFreebieKnowledge() {
 }
 
 function applyLonerAbilities() {
+    resetAbilitiesToUntrained()
     for (i=0; i<lonerTalentsArray.length; i++) {
         if (lonerTalentsArray[i].selected == true) {
             if (talentUntrained[i].selected == true) {
@@ -3693,6 +4153,8 @@ function applyLonerAbilities() {
     talentChange()
     skillChange()
     knowledgeChange()
+    abilityChange()
+    removeAbilityOptions()
 }
 
 function resetLonerAbilities() {
@@ -3734,19 +4196,12 @@ function resetLonerAbilities() {
     talentChange()
     skillChange()
     knowledgeChange()
+    abilityChange()
+    reAddAbilityOptions()
 }
 
-let chameleonTalentsArray = document.getElementsByClassName("chameleonTalent")
-let chameleonSkillsArray = document.getElementsByClassName("chameleonSkill")
-let chameleonKnowledgesArray = document.getElementsByClassName("chameleonKnowledge")
-let chameleonFreebie01Talents = document.getElementsByClassName("chameleonFreebie01Talent")
-let chameleonFreebie02Talents = document.getElementsByClassName("chameleonFreebie02Talent")
-let chameleonFreebie01Skills = document.getElementsByClassName("chameleonFreebie01Skill")
-let chameleonFreebie02Skills = document.getElementsByClassName("chameleonFreebie02Skill")
-let chameleonFreebie01Knowledges = document.getElementsByClassName("chameleonFreebie01Knowledge")
-let chameleonFreebie02Knowledges = document.getElementsByClassName("chameleonFreebie02Knowledge")
-
 function applyChameleonAbilities() {
+    resetAbilitiesToUntrained()
     for (i=0; i<chameleonTalentsArray.length; i++) {
         if (chameleonTalentsArray[i].selected == true) {
             if (talentUntrained[i].selected == true) {
@@ -3843,6 +4298,8 @@ function applyChameleonAbilities() {
     talentChange()
     skillChange()
     knowledgeChange()
+    abilityChange()
+    removeAbilityOptions()
 }
 
 function resetChameleonAbilities() {
@@ -3862,4 +4319,6 @@ function resetChameleonAbilities() {
     talentChange()
     skillChange()
     knowledgeChange()
+    abilityChange()
+    reAddAbilityOptions()
 }

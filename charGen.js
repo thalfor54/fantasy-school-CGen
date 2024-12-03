@@ -89,6 +89,21 @@ let armorClass = document.getElementById("armorClass")
 let initiative = document.getElementById("initiative")
 let hitPoints = document.getElementById("hitPoints")
 
+function baselineModifiers() {
+    changeStrengthRow()
+    changeDexterityRow()
+    changeConstitutionRow()
+    changeResilienceRow()
+    changePersuasionRow()
+    changeManipulationRow()
+    changeIngratiationRow()
+    changeCharismaRow()
+    changePerceptionRow()
+    changeInsightRow()
+    changeReasonRow()
+    changeIntuitionRow()
+}
+
 function calculateFeelsResistancesAndSaves() {
     let agitatedSpeciesModifier = document.getElementById("agitatedSpeciesModifier").innerHTML
     let agitatedCliqueModifier = document.getElementById("agitatedCliqueModifier").innerHTML
@@ -2298,7 +2313,7 @@ function chameleonModifiers() {
     // generate FEELS increase drop-down menus
     let feelsLabel01 = document.createElement("label")
     feelsLabel01.setAttribute("for", "feelsLabel01")
-    feelsLabel01.innerHTML = 'Feel to increase #1'
+    feelsLabel01.innerHTML = 'FEEL to increase #1'
     chameleonAttributePicks.append(feelsLabel01)
     let feelsArray = ['', 'Agitated', 'Angry', 'Horny', 'Melancholy']
     let feels01 = document.createElement("select")
@@ -2314,7 +2329,7 @@ function chameleonModifiers() {
     chameleonAttributePicks.append(br09)
     let feelsLabel02 = document.createElement("label")
     feelsLabel02.setAttribute("for", "feels02")
-    feelsLabel02.innerHTML = 'Feel to increase #2'
+    feelsLabel02.innerHTML = 'FEEL to increase #2'
     chameleonAttributePicks.append(feelsLabel02)
     let feels02 = document.createElement("select")
     feels02.setAttribute("id","feels02")
@@ -2442,16 +2457,16 @@ let memory = document.getElementById("memory")
 let memoryModifier = document.getElementById("memoryModifier")
 let stealth = document.getElementById("stealth")
 let stealthModifier = document.getElementById("stealthModifier")
+let deception = document.getElementById("deception")
+let deceptionModifier = document.getElementById("deceptionModifier")
 let firearms = document.getElementById("firearms")
 let firearmsModifier = document.getElementById("firearmsModifier")
 let investigation = document.getElementById("investigation")
 let investigationModifier = document.getElementById("investigationModifier")
 let leadership = document.getElementById("leadership")
 let leadershipModifier = document.getElementById("leadershipModifier")
-let lockPicking = document.getElementById("lockPicking")
-let lockPickingModifier = document.getElementById("lockPickingModifier")
-let lying = document.getElementById("lying")
-let lyingModifier = document.getElementById("lyingModifier")
+let legerdemain = document.getElementById("legerdemain")
+let legerdemainModifier = document.getElementById("legerdemainModifier")
 let melee = document.getElementById("melee")
 let meleeModifier = document.getElementById("meleeModifier")
 let music = document.getElementById("music")
@@ -2482,9 +2497,9 @@ let specialModifier = document.getElementById("specialModifier")
 let talentStringArray = ['Acting', 'Alertness', 'Athletics', 'Brawling', 'Calming Down', 'Empathy', 'Intimidation', 'Memory', 'Stealth']
 let talentArray = [acting, alertness, athletics, brawling, calmingDown, empathy, intimidation, memory, stealth]
 let talentModifierArray = [actingModifier, alertnessModifier, athleticsModifier, brawlingModifier, calmingDownModifier, empathyModifier, intimidationModifier, memoryModifier, stealthModifier]
-let skillStringArray = ['Firearms', 'Investigation', 'Leadership', 'Lock-Picking', 'Lying', 'Melee', 'Music', 'Security', 'Socializing']
-let skillArray = [firearms, investigation, leadership, lockPicking, lying, melee, music, security, socializing]
-let skillModifierArray = [firearmsModifier, investigationModifier, leadershipModifier, lockPickingModifier, lyingModifier, meleeModifier, musicModifier, securityModifier, socializingModifier]
+let skillStringArray = ['Deception', 'Firearms', 'Investigation', 'Leadership', 'Legerdemain', 'Melee', 'Music', 'Security', 'Socializing']
+let skillArray = [deception, firearms, investigation, leadership, legerdemain, melee, music, security, socializing]
+let skillModifierArray = [deceptionModifier, firearmsModifier, investigationModifier, leadershipModifier, legerdemainModifier, meleeModifier, musicModifier, securityModifier, socializingModifier]
 let knowledgeStringArray = ['Arcana', 'Code-Breaking', 'Computers', 'History', 'Medicine', 'Nature', 'Religion', 'Science', 'Special']
 let knowledgeArray = [arcana, codeBreaking, computers, history, medicine, nature, religion, science, special]
 let knowledgeModifierArray = [arcanaModifier, codeBreakingModifier, computersModifier, historyModifier, medicineModifier, natureModifier, religionModifier, scienceModifier, specialModifier]
